@@ -10,8 +10,3 @@
     height: 35vh;
     overflow-y: scroll;
 }
-.create_newpost{
-    position: absolute;
-    right: 4em;
-    margin-top: .8em;
-}

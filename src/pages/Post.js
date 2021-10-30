@@ -2,6 +2,7 @@ import React from "react";
 import  LatestPost from "../components/Posts/LatestPost";
 import LatestComment from "../components/Posts/LatestComment";
 import "../components/posts.css";
+import LatestMessage from "../components/Posts/LatestMessage";
 
 
 function Post() {
@@ -42,13 +43,13 @@ function Post() {
             </div>
             <button className="btn btn-light btn-sm">See All</button>
           </div>
-          <div className="col-lg-12 border p-4 bg-light my-2 mx-auto rounded shadow-sm post">
+          <div className="col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm post">
             <LatestPost/>
           </div>
-          <div className="col-lg-5 border p-4 bg-light my-2 mr-3 rounded shadow-sm message">
-            {/* <LatestMessage /> */}
+          <div className="col-lg-5 border p-3 bg-light my-2 mr-3 rounded shadow-sm message">
+            <LatestMessage />
           </div>
-          <div className="col-lg-6 border p-4 bg-light my-2 mx-auto rounded shadow-sm comment">
+          <div className="col-lg-6 border p-3 bg-light my-2 mx-auto rounded shadow-sm comment">
             <LatestComment />
           </div>
         </div>
