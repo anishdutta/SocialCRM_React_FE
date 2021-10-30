@@ -1,0 +1,17 @@
+.post{
+    height: 50vh;
+    overflow-y: scroll;
+}
+.message{
+    height: 35vh;
+    overflow-y: scroll;
+}
+.comment{
+    height: 35vh;
+    overflow-y: scroll;
+}
+.create_newpost{
+    position: absolute;
+    right: 4em;
+    margin-top: .8em;
+}
