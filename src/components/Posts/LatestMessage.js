@@ -4,6 +4,7 @@ import linkedin from '../assets/linkedin.png'
 const LatestMessage = () => {
     return (
         <div className="d-flex flex-column">
+            <h5>Latest Messages</h5>
             <div className=" d-flex align-items-center justify-content-between">
                 <div className="d-flex my-2">
                     <img src={linkedin} alt="pic" style={{height:"4em"}} className="rounded-circle" />
