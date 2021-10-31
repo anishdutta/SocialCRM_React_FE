@@ -1,12 +1,12 @@
-.post{
+.mailsubject{
     height: 45vh;
     overflow-y: scroll;
 }
-.message{
+.addemail{
     height: 35vh;
     overflow-y: scroll;
 }
-.comment{
+.emails{
     height: 35vh;
     overflow-y: scroll;
 }
