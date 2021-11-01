@@ -7,16 +7,21 @@
 .social-logo {
   display: block;
   height: 2em;
-  margin: 1em 0;
+  /* margin: 1em 0; */
 }
 .icon-sidebar {
   display: none;
+}
+.text-sidebar{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
 }
 .text-sidebar a {
   color: #202020;
 }
 .text-sidebar a:hover {
-  color: #f8f22d;
+  color: #bd8906;
 }
 @media only screen and (max-width: 768px) {
   .sidebar {
@@ -26,12 +31,14 @@
     padding: 1.5em 0.2em;
   }
   .text-sidebar {
-    /* display: none; */
+    display: none;
   }
   .icon-sidebar {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: row; */
+    width: 80%;
     align-items: center;
+    justify-content: space-around;
     margin: 2em 0;
   }
 }
