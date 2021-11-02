@@ -4,10 +4,10 @@ import "../components/newposts.css";
 function NewPost() {
   return (
     <>
-      <div className="container vh-100">
+      <div className="container py-5">
         <h5 className="mb-5">Create New Post</h5>
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col-lg-6 px-3">
             <div className="mb-3">
               <textarea
                 className="form-control text-dark"

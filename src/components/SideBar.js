@@ -31,8 +31,8 @@ function SideBar() {
 
         <Link to="/newpost" className="text-decoration-none text-center m-auto">
           <button className="btn btn-warning text-light">
-            <span>Create New Post </span>
-            <img className="mx-2" src={downarrow} alt="down" />
+            <span className="bg-transparent">Create New Post </span>
+            <img className="mx-2 bg-transparent" src={downarrow} alt="down" />
           </button>
         </Link>
       </ul>

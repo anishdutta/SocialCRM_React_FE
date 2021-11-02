@@ -7,6 +7,7 @@ import SideBar from "./components/SideBar";
 import Post from "./pages/Post";
 import Newpost from "./pages/Newpost";
 import Marketing from "./pages/Marketing";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/post" exact render={() => <Post />} />
           <Route path="/newpost" exact render={() => <Newpost />} />
           <Route path="/marketing" exact render={() => <Marketing />} />
+          <Route path="/chat" exact render={() => <Chat />} />
         </Switch>
       </div>
     </div>

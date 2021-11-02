@@ -15,9 +15,7 @@ const LastMail = () => {
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               test@sociophin.com
-            </p>
           </td>
           <td>30/10/2021</td>
         </tr>
@@ -25,36 +23,28 @@ const LastMail = () => {
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               test@sociophin.com
-            </p>
           </td>
           <td>30/10/2021</td>
         </tr>
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               test@sociophin.com
-            </p>
           </td>
           <td>30/10/2021</td>
         </tr>
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               test@sociophin.com
-            </p>
           </td>
           <td>30/10/2021</td>
         </tr>
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               test@sociophin.com
-            </p>
           </td>
           <td>30/10/2021</td>
         </tr>

@@ -16,10 +16,8 @@ function MailSubject() {
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
-              tenetur architecto aut.
-            </p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
+            tenetur architecto aut.
           </td>
           <td>451</td>
           <td>30/10/2021</td>
@@ -28,10 +26,8 @@ function MailSubject() {
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
               tenetur architecto aut.
-            </p>
           </td>
           <td>451</td>
           <td>30/10/2021</td>
@@ -39,10 +35,8 @@ function MailSubject() {
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
               tenetur architecto aut.
-            </p>
           </td>
           <td>451</td>
           <td>30/10/2021</td>
@@ -50,10 +44,8 @@ function MailSubject() {
         <tr>
           <td>1</td>
           <td className="">
-            <p className="fs-6 mx-2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
               tenetur architecto aut.
-            </p>
           </td>
           <td>451</td>
           <td>30/10/2021</td>

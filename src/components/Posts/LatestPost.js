@@ -1,9 +1,9 @@
 import dot from "../assets/dot.png";
-import instagram from "../assets/instagram.png";
+import facebook from "../assets/facebook.png";
 import { Table } from "react-bootstrap";
 const LatestPost = () => {
   return (
-    <Table bordered hover>
+    <Table bordered hover className="posttable">
       <thead>
         <tr>
           <th>SNo</th>
@@ -21,12 +21,12 @@ const LatestPost = () => {
           <td>1</td>
           <td className="w-100 d-flex">
             <img
-              src={instagram}
+              src={facebook}
               alt="post"
               style={{ height: "4em" }}
               className="rounded shadow mx-1"
             />
-            <p className="fs-6 mx-2">
+            <p className="mx-2 para">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
               tenetur architecto aut.
             </p>
@@ -43,14 +43,14 @@ const LatestPost = () => {
         </tr>
         <tr>
           <td>2</td>
-          <td className="w-100 d-flex">
+          <td className="w-100 d-flex ">
             <img
-              src={instagram}
+              src={facebook}
               alt="post"
               style={{ height: "4em" }}
               className="rounded shadow mx-1"
             />
-            <p className="fs-6 mx-2">
+            <p className="mx-2 para">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
               tenetur architecto aut.
             </p>

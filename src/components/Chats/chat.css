@@ -1,0 +1,30 @@
+.saved li{
+    font-size: 0.9em;
+}
+.quick_reply{
+    padding: .5em 1em;
+    margin: 1em;
+    background-color: #e9e9e9;
+    border-radius: 10em;
+    font-size: 0.8em;
+    cursor: pointer
+}
+.text_input{
+    background-color: #e9e9e9;
+    border-radius: 1em;
+    padding: 0.3em 1em;
+}
+.text_input input{
+    outline: none;
+    border: none;
+}    
+.specific_chat,.specific_chat_primary{
+    height: 8em;
+    border-radius: .5em;
+}
+.specific_chat_primary{
+    background-color: #BBD4D3;
+}
+.specific_chat{
+    background-color: #FEF2D5;
+}

@@ -10,3 +10,27 @@
     height: 35vh;
     overflow-y: scroll;
 }
+.chat{
+    text-decoration: none;
+    color: #202020;
+}
+@media screen and (max-width:768px){
+    .posttable td{
+        font-size: 0.8em;
+    }
+    .posttable th{
+        font-size: 0.8em;
+    }
+    .message p,.message h5{
+       font-size: 0.9em;
+    }
+    .message img{
+       height: 2em;
+    }
+    .comment td{
+        font-size: 0.8em;
+    }
+    .comment th{
+        font-size: 0.8em;
+    }
+}
