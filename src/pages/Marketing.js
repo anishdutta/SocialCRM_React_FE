@@ -6,8 +6,13 @@ import "../components/marketing.css";
 
 function Marketing() {
   return (
+<<<<<<< Updated upstream
     <>
       <div className="pt-2 pb-5 px-5">
+=======
+    <div>
+     <div className="container-fluid px-5">
+>>>>>>> Stashed changes
         <div className="row">
           <div className="d-flex justify-content-between px-0">
             <h4>Marketing</h4>
@@ -19,7 +24,7 @@ function Marketing() {
           <div className=" col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm mailsubject"></div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
