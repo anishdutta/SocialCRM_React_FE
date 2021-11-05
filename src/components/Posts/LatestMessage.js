@@ -1,49 +1,80 @@
-import React from 'react'
-import linkedin from '../assets/linkedin.png'
+import React from "react";
+import linkedin from "../assets/linkedin.png";
+import { Link } from "react-router-dom";
 
 const LatestMessage = () => {
-    return (
-        <div className="d-flex flex-column">
-            <h5>Latest Messages</h5>
-            <div className=" d-flex align-items-center justify-content-between">
-                <div className="d-flex my-2">
-                    <img src={linkedin} alt="pic" style={{height:"4em"}} className="rounded-circle" />
-                    <div className="mx-3">
-                        <h5 className="">Sender's Name</h5>
-                        <p className="">Latest Message asjdkjj</p>
-                    </div>      
-                </div>
-                <div className="bg-warning rounded-circle" style={{width:"2.5em"}}>
-                   <h3 className="text-white text-center">4</h3>
-                </div>
-            </div> 
-            {/* repeated code */}
-            <div className=" d-flex align-items-center justify-content-between">
-                <div className="d-flex my-2">
-                    <img src={linkedin} alt="pic" style={{height:"4em"}} className="rounded-circle" />
-                    <div className="mx-3">
-                        <h5 className="">Sender's Name</h5>
-                        <p className="">Latest Message asjdkjj</p>
-                    </div>      
-                </div>
-                <div className="bg-warning rounded-circle" style={{width:"2.5em"}}>
-                   <h3 className="text-white text-center">4</h3>
-                </div>
-            </div> 
-            <div className=" d-flex align-items-center justify-content-between">
-                <div className="d-flex my-2">
-                    <img src={linkedin} alt="pic" style={{height:"4em"}} className="rounded-circle" />
-                    <div className="mx-3">
-                        <h5 className="">Sender's Name</h5>
-                        <p className="">Latest Message asjdkjj</p>
-                    </div>      
-                </div>
-                <div className="bg-warning rounded-circle" style={{width:"2.5em"}}>
-                   <h3 className="text-white text-center">4</h3>
-                </div>
-            </div> 
+  return (
+    <div className="d-flex flex-column">
+      <h5>Latest Messages</h5>
+      <Link to="/chat" className="chat">
+        <div className=" d-flex align-items-center justify-content-between">
+          <div className="d-flex my-2">
+            <img
+              src={linkedin}
+              alt="pic"
+              style={{ height: "4em" }}
+              className="rounded-circle"
+            />
+            <div className="mx-3">
+              <h5 className="text-black">Sender's Name</h5>
+              <p className="text-secondary">Latest Message asjdkjj</p>
+            </div>
+          </div>
+          <div
+            className="bg-warning rounded-circle d-flex justify-content-center"
+            style={{ width: "2em" }}
+          >
+            <span className="text-white fs-5">4</span>
+          </div>
         </div>
-    )
-}
+      </Link>
+      {/* repeated code */}
+      <Link to="/chat" className="chat">
+        <div className=" d-flex align-items-center justify-content-between">
+          <div className="d-flex my-2">
+            <img
+              src={linkedin}
+              alt="pic"
+              style={{ height: "4em" }}
+              className="rounded-circle"
+            />
+            <div className="mx-3">
+              <h5 className="text-black">Sender's Name</h5>
+              <p className="text-secondary">Latest Message asjdkjj</p>
+            </div>
+          </div>
+          <div
+            className="bg-warning rounded-circle d-flex justify-content-center"
+            style={{ width: "2em" }}
+          >
+            <span className="text-white fs-5">4</span>
+          </div>
+        </div>
+      </Link>
+      <Link to="/chat" className="chat">
+        <div className=" d-flex align-items-center justify-content-between">
+          <div className="d-flex my-2">
+            <img
+              src={linkedin}
+              alt="pic"
+              style={{ height: "4em" }}
+              className="rounded-circle"
+            />
+            <div className="mx-3">
+              <h5 className="text-black">Sender's Name</h5>
+              <p className="text-secondary">Latest Message asjdkjj</p>
+            </div>
+          </div>
+          <div
+            className="bg-warning rounded-circle d-flex justify-content-center"
+            style={{ width: "2em" }}
+          >
+            <span className="text-white fs-5">4</span>
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
-export default LatestMessage
+export default LatestMessage;

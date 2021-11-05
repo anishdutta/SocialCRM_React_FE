@@ -2,7 +2,7 @@ import React from "react";
 import './chat.css'
 const Message = ({ isPrimary }) => {
   return (
-    <div>
+    <>
       {isPrimary ? (
         <div className="d-flex align-items-end my-4 ">
           <div className="h-100 mx-2">
@@ -32,8 +32,8 @@ const Message = ({ isPrimary }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
-export default Message
+export default Message;

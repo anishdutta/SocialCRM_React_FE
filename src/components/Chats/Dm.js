@@ -40,4 +40,5 @@ const Dm = () => {
   );
 };
 
-export default Dm
+
+export default Dm;

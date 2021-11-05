@@ -1,27 +1,23 @@
 import React from "react";
-// import LatestPost from "../components/Posts/LatestPost";
-// import LatestComment from "../components/Posts/LatestComment";
 import "../components/marketing.css";
-// import LatestMessage from "../components/Posts/LatestMessage";
+import MailSubject from "../components/Marketing/MailSubject";
+import LastMail from "../components/Marketing/LastMail";
+import AddEmail from "../components/Marketing/AddEmail";
 
 function Marketing() {
   return (
-<<<<<<< Updated upstream
-    <>
-      <div className="pt-2 pb-5 px-5">
-=======
     <div>
-     <div className="container-fluid px-5">
->>>>>>> Stashed changes
+      <div className="container-fluid px-5">
         <div className="row">
-          <div className="d-flex justify-content-between px-0">
-            <h4>Marketing</h4>
+          <div className="col-lg-5 border mx-2 p-2 bg-light mx-auto my-2 rounded shadow-sm emails">
+            <LastMail />
           </div>
-          <div className="col-lg-12 py-0 px-0 d-flex justify-content-between">
-            <div className="col-lg-6 border p-3 bg-light rounded shadow-sm emails"></div>
-            <div className="col-lg-6 border p-3 bg-light rounded shadow-sm addemail"></div>
+          <div className="col-lg-6 border p-3 mx-2 bg-light mx-auto my-2 rounded shadow-sm addemail">
+            <AddEmail />
           </div>
-          <div className=" col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm mailsubject"></div>
+          <div className=" col-lg-12 border p-2 bg-light my-2 mx-auto rounded shadow-sm mail_subject">
+            <MailSubject />
+          </div>
         </div>
       </div>
     </div>
