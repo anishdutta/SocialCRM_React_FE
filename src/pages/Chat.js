@@ -8,7 +8,7 @@ const Chat = () => {
 
   return (
     <main className="container-fluid px-5">
-      <div className="row h-100">
+      <div className="row vh-75">
         <div className="col-lg-8 bg-light shadow rounded my-2">
           <div className="row">
             <div className="col-lg-4">

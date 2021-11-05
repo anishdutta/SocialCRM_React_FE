@@ -62,16 +62,6 @@ function Post() {
           <div className=" col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm post">
             <LatestPost />
           </div>
-<<<<<<< Updated upstream
-          <div className="col-lg-12 py-0 px-0 d-flex justify-content-between">
-            <div className="col-lg-6 border p-3 bg-light rounded shadow-sm message">
-              <LatestMessage />
-            </div>
-            <div className="col-lg-6 border p-3 bg-light rounded shadow-sm comment">
-              <LatestComment />
-            </div>
-          </div>
-=======
           {/* <div className="col-lg-12 py-0 px-0 d-flex justify-content-between flex-wrap row"> */}
           <div className="col-lg-5 border p-3 bg-light mx-auto my-2 rounded shadow-sm message">
             <LatestMessage />
@@ -80,7 +70,6 @@ function Post() {
             <LatestComment />
           </div>
           {/* </div> */}
->>>>>>> Stashed changes
         </div>
       </div>
     </div>
