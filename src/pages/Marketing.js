@@ -6,8 +6,7 @@ import AddEmail from "../components/Marketing/AddEmail";
 
 function Marketing() {
   return (
-    <div>
-      <div className="container-fluid px-5">
+      <div className="container-fluid px-5 h-100">
         <div className="row">
           <div className="col-lg-5 border mx-2 p-2 bg-light mx-auto my-2 rounded shadow-sm emails">
             <LastMail />
@@ -20,7 +19,6 @@ function Marketing() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

@@ -3,7 +3,6 @@ import "./App.css";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 // import Header from "./components/Header";
 import Index from "./pages/Index";
-import SideBar from "./components/SideBar";
 // import { useState } from "react";
 import Post from "./pages/Post";
 import Newpost from "./pages/Newpost";
@@ -11,6 +10,7 @@ import Marketing from "./pages/Marketing";
 import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Header from "./components/Header";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,8 +18,7 @@ function App() {
   return (
     <Router>
       <div className="d-flex flex-column">
-        <SideBar />
-
+        <Header />
         <div className="main container-fluid">
           <Switch>
             <Route path="/" exact render={() => <Index />} />

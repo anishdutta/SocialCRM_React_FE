@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { db, auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import { CombineAuthButton } from "./Login";
 
 const Signup = (props) => {
   const [name, setName] = useState("");
@@ -42,73 +44,85 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100">
-      <form
-        className="container col-lg-4 mx-auto"
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            required
-          />
+    <div className="d-flex align-items-center justify-content-center h-100">
+      <div className="shadow col-lg-4 bg-light">
+       <CombineAuthButton />
+        <div className="px-3 mt-3">
+          <h5 className="">
+            Welcome <span className="text-warning">Back</span>
+          </h5>
         </div>
-        <div className="mb-3">
-          <label htmlFor="org_name" className="form-label">
-            Organization Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            value={orgname}
-            onChange={(e) => {
-              setOrgName(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-warning text-light">
-          Submit
-        </button>
-      </form>
+
+        <form
+          className="container mx-auto p-3"
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="org_name" className="form-label">
+              Organization Name
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              value={orgname}
+              onChange={(e) => {
+                setOrgName(e.target.value);
+              }}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="btn btn-warning text-light w-100 mt-2"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

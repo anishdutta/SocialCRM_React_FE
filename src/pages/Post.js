@@ -34,28 +34,26 @@ function Post() {
   }, [pageid, accessid]);
 
   return (
-    <div>
-      <div className="pt-2 pb-5 px-5">
+      <div className=" px-5 pt-3 h-100">
         <div className="row">
           <div className="d-flex justify-content-between px-0">
-            <div class="btn-group">
-              <button type="button" class="btn btn-light btn-sm">
+            <div className="btn-group">
+              <button className="btn btn-light btn-sm" type="button">
                 Post Status
               </button>
               <button
                 type="button"
-                class="btn btn-warning dropdown-toggle dropdown-toggle-split btn-sm"
-                data-toggle="dropdown"
-                aria-haspopup="true"
+                className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span class="sr-only" />
+                <span className="visually-hidden">Toggle Dropdown</span>
               </button>
-              <div class="dropdown-menu">
-                <option class="dropdown-item">All</option>
-                <option class="dropdown-item">Filter</option>
-                <option class="dropdown-item">Filter</option>
-              </div>
+              <ul className="dropdown-menu">
+              <option className="dropdown-item">All</option>
+                <option className="dropdown-item">Filter</option>
+                <option className="dropdown-item">Filter</option>
+              </ul>
             </div>
             <button className="btn btn-light btn-sm">See All</button>
           </div>
@@ -72,7 +70,6 @@ function Post() {
           {/* </div> */}
         </div>
       </div>
-    </div>
   );
 }
 

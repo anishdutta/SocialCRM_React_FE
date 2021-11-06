@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
+import '../App.css'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +14,7 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user)
+        console.log(user);
         // ...
       })
       .catch((error) => {
@@ -22,45 +24,76 @@ function Login() {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100">
-      <form
-        className="container col-lg-4 mx-auto"
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+    <div className="d-flex align-items-center justify-content-center h-100">
+      <div className="shadow col-lg-4 bg-light rounded">
+        <CombineAuthButton />
+        <div className="px-3 mt-3">
+          <h5 className="">
+            Welcome <span className="text-warning">Back</span>
+          </h5>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </div>
-        <button type="submit" className="btn btn-warning text-light">
-          Submit
-        </button>
-      </form>
+        <form
+          className="container mx-auto p-3"
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            className="btn btn-warning text-light w-100 mt-2"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
 export default Login;
+
+export const CombineAuthButton = () => {
+  
+  return (
+    <div className="d-flex">
+      <Link
+        to="/login"
+        className="text-decoration-none text-center m-auto w-50"
+      >
+        <button className="btn btn-warning text-light w-100 rounded-0">Login</button>
+      </Link>
+      <Link
+        to="/signup"
+        className="text-decoration-none text-center m-auto w-50"
+      >
+        <button className="btn btn-warning text-light w-100 rounded-0">Signup</button>
+      </Link>
+    </div>
+  );
+};

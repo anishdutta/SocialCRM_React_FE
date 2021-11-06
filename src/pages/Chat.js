@@ -7,8 +7,8 @@ import Saved from "../components/Chats/Saved";
 const Chat = () => {
 
   return (
-    <main className="container-fluid px-5">
-      <div className="row vh-75">
+    <main className="container-fluid px-5 h-100">
+      <div className="row">
         <div className="col-lg-8 bg-light shadow rounded my-2">
           <div className="row">
             <div className="col-lg-4">
