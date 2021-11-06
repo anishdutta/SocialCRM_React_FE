@@ -1,18 +1,14 @@
 .header{
   background-color: #fff;
 }
-.social-logo {
-  display: block;
-  height: 2em;
-  /* margin: 1em 0; */
-}
+
 .sidebar {
   display: none;
 }
 .text-sidebar{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   margin: auto;
 }
 .text-sidebar a {

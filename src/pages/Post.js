@@ -61,7 +61,7 @@ function Post() {
             <LatestPost />
           </div>
           {/* <div className="col-lg-12 py-0 px-0 d-flex justify-content-between flex-wrap row"> */}
-          <div className="col-lg-5 border p-3 bg-light mx-auto my-2 rounded shadow-sm message">
+          <div className="col-lg-5 border bg-light mx-auto my-2 rounded shadow-sm message">
             <LatestMessage />
           </div>
           <div className="col-lg-6 border p-3 bg-light mx-auto my-2 rounded shadow-sm comment">

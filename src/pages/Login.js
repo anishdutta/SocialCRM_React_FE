@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import '../App.css'
 
-function Login() {
+function Login({setUser,user}) {
+  const history = useHistory()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  if(user){
+    history.push('/')
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +19,9 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        setUser(user)
         console.log(user);
+        history.push('/')
         // ...
       })
       .catch((error) => {

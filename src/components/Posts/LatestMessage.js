@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 
 const LatestMessage = () => {
   return (
-    <div className="d-flex flex-column">
-      <h5>Latest Messages</h5>
+    <div className="d-flex flex-column relative">
+      <div className="sticky-top top-0 bg-light m-0 py-2">
+      <h5 className="">Latest Messages</h5>
+
+      </div>
       <Link to="/chat" className="chat">
         <div className=" d-flex align-items-center justify-content-between">
           <div className="d-flex my-2">

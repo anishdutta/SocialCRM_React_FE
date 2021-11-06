@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { db, auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { CombineAuthButton } from "./Login";
 
+
 const Signup = (props) => {
+  const history = useHistory() 
+
+  if(props.user){
+    history.push({
+      pathname:'/'
+    })
+  }
+
   const [name, setName] = useState("");
   const [orgname, setOrgName] = useState("");
   const [email, setEmail] = useState("");
@@ -49,7 +58,7 @@ const Signup = (props) => {
        <CombineAuthButton />
         <div className="px-3 mt-3">
           <h5 className="">
-            Welcome <span className="text-warning">Back</span>
+            Register<span className="text-warning"> Now</span>
           </h5>
         </div>
 

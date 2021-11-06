@@ -19,7 +19,7 @@ const LatestPost = () => {
   const page_id = useRecoilValue(pageid);
   const [item, setItem] = useState("");
   const [posts, setPosts] = useState([]);
-  console.log(posts)
+  console.log(posts);
 
   useEffect(() => {
     axios
@@ -92,6 +92,29 @@ const LatestPost = () => {
           <td>555</td>
           <td>1000</td>
           <td>
+            <div className="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown button
+              </button>
+
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                  <a className="dropdown-item">Action</a>
+                </li>
+                <li>
+                  <a className="dropdown-item">Another action</a>
+                </li>
+                <li>
+                  <a className="dropdown-item">Something else here</a>
+                </li>
+              </ul>
+            </div>
             <img src={dot} alt="more" style={{ height: "1em" }} />
           </td>
         </tr>
