@@ -2,7 +2,7 @@ import React from "react";
 
 const Saved = () => {
   return (
-    <div className="d-flex flex-column justify-content-center h-100">
+    <div className="d-flex flex-column justify-content-center align-content-between h-100">
       <div className="bg-light rounded shadow my-auto p-3">
         <div className="d-flex justify-content-center">
             <img src="https://source.unsplash.com/160x160/?avatar" alt="" height="150px" className="rounded-circle" />

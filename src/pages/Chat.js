@@ -19,7 +19,7 @@ const Chat = () => {
             </div>
           </div>
         </div>
-        <div className="col-lg-3 mx-auto my-2 ">
+        <div className="col-lg-3 mx-auto my-2">
           <Saved />
         </div>
       </div>

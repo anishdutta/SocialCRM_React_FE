@@ -2,7 +2,7 @@ import React from "react";
 import dot from "../assets/dot.png";
 import facebook from "../assets/facebook.png";
 import { Table } from "react-bootstrap";
-
+import './posts.css'
 import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { access_token, pageid, uid } from "../../GlobalState";
@@ -68,7 +68,23 @@ const LatestPost = () => {
           <td>555</td>
           <td>1000</td>
           <td>
-            <img src={dot} alt="more" style={{ height: "1em" }} />
+            <div className="dropdown">
+              <button
+                className="more_options_post"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+               <img src={dot} alt="more" style={{ height: "1em" }} />
+              </button>
+
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li className="dropdown-item">View More</li>
+                  <li className="dropdown-item">Edit Post</li>
+                  <li className="dropdown-item">Delete Post</li>
+              </ul>
+            </div>
           </td>
         </tr>
         <tr>
@@ -94,28 +110,21 @@ const LatestPost = () => {
           <td>
             <div className="dropdown">
               <button
-                class="btn btn-secondary dropdown-toggle"
+                className="more_options_post"
                 type="button"
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown button
+               <img src={dot} alt="more" style={{ height: "1em" }} />
               </button>
 
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li>
-                  <a className="dropdown-item">Action</a>
-                </li>
-                <li>
-                  <a className="dropdown-item">Another action</a>
-                </li>
-                <li>
-                  <a className="dropdown-item">Something else here</a>
-                </li>
+                  <li className="dropdown-item">View More</li>
+                  <li className="dropdown-item">Edit Post</li>
+                  <li className="dropdown-item">Delete Post</li>
               </ul>
             </div>
-            <img src={dot} alt="more" style={{ height: "1em" }} />
           </td>
         </tr>
       </tbody>
