@@ -1,37 +1,10 @@
 import React from "react";
 import dot from "../assets/dot.png";
-import facebook from "../assets/facebook.png";
+// import facebook from "../assets/facebook.png";
 import { Table } from "react-bootstrap";
-import './posts.css'
-import axios from "axios";
-import { useRecoilValue } from "recoil";
-import { access_token, pageid, uid } from "../../GlobalState";
-import { useEffect, useState } from "react";
-// import Comments from "./comments";
-// import maillogo from "./email.png";
-// import richpanellogo from "./High-Res-Logo-Icon-Blue.png";
-// import myposts from "./post.png";
-import { Link } from "react-router-dom";
+import "./posts.css";
 
-const LatestPost = () => {
-  const accessid = useRecoilValue(access_token);
-  const userid = useRecoilValue(uid);
-  const page_id = useRecoilValue(pageid);
-  const [item, setItem] = useState("");
-  const [posts, setPosts] = useState([]);
-  console.log(posts);
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message&access_token=${accessid}`
-      )
-      .then((response) => {
-        console.log(response.data.data);
-        setPosts(response.data.data);
-      });
-  }, [pageid, accessid]);
-
+const LatestPost = ({ posts }) => {
   return (
     <Table bordered hover className="posttable">
       <thead>
@@ -47,86 +20,48 @@ const LatestPost = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td className="w-100 d-flex">
-            <img
-              src={facebook}
-              alt="post"
-              style={{ height: "4em" }}
-              className="rounded shadow mx-1"
-            />
-            <p className="mx-2 para">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
-              tenetur architecto aut.
-            </p>
-          </td>
-          <td>posted</td>
-          <td>30/10/2021</td>
-          <td>12:00</td>
-          <td>429</td>
-          <td>555</td>
-          <td>1000</td>
-          <td>
-            <div className="dropdown">
-              <button
-                className="more_options_post"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-               <img src={dot} alt="more" style={{ height: "1em" }} />
-              </button>
+        {posts.map((data, index) => (
+          <tr>
+            <td>{index + 1}</td>
+            <td className="w-100 d-flex">
+              <img
+                src={data.full_picture}
+                alt="post"
+                style={{ height: "4em" }}
+                className="rounded shadow mx-1"
+              />
+              <p className="mx-2 para">{data.message}</p>
+            </td>
+            <td>posted</td>
+            <td>30/10/2021</td>
+            <td>12:00</td>
+            <td>429</td>
+            <td>555</td>
+            <td>1000</td>
+            <td>
+              <div className="dropdown">
+                <button
+                  className="more_options_post"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img src={dot} alt="more" style={{ height: "1em" }} />
+                </button>
 
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuLink"
+                >
                   <li className="dropdown-item">View More</li>
                   <li className="dropdown-item">Edit Post</li>
                   <li className="dropdown-item">Delete Post</li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td className="w-100 d-flex ">
-            <img
-              src={facebook}
-              alt="post"
-              style={{ height: "4em" }}
-              className="rounded shadow mx-1"
-            />
-            <p className="mx-2 para">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
-              tenetur architecto aut.
-            </p>
-          </td>
-          <td>posted</td>
-          <td>30/10/2021</td>
-          <td>12:00</td>
-          <td>429</td>
-          <td>555</td>
-          <td>1000</td>
-          <td>
-            <div className="dropdown">
-              <button
-                className="more_options_post"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-               <img src={dot} alt="more" style={{ height: "1em" }} />
-              </button>
-
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li className="dropdown-item">View More</li>
-                  <li className="dropdown-item">Edit Post</li>
-                  <li className="dropdown-item">Delete Post</li>
-              </ul>
-            </div>
-          </td>
-        </tr>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   );

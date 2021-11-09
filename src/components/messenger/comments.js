@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
@@ -5,8 +8,8 @@ import { access_token, pageid, uid } from "../GlobalState";
 
 const Comments = (props) => {
   const accessid = useRecoilValue(access_token);
-  const userid = useRecoilValue(uid);
-  const page_id = useRecoilValue(pageid);
+  // const userid = useRecoilValue(uid);
+  // const page_id = useRecoilValue(pageid);
   const [comments, setcomments] = useState([]);
   const [textInput, setTextInput] = React.useState("");
 
@@ -45,11 +48,11 @@ const Comments = (props) => {
       });
   }
 
-  function converToLocalTime(serverDate) {
-    var b = serverDate.split(/\D+/);
-    let mystr = `${b[1]}-${b[2]}      ${b[3]}:${b[4]}`;
-    return mystr;
-  }
+  // function converToLocalTime(serverDate) {
+  //   var b = serverDate.split(/\D+/);
+  //   let mystr = `${b[1]}-${b[2]}      ${b[3]}:${b[4]}`;
+  //   return mystr;
+  // }
 
   return (
     <div className="col col-md-6 comments">

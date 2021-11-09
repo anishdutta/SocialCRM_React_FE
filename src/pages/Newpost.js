@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/newposts.css";
+import DragAndDrop from '../components/DragAndDrop'
 
 function NewPost() {
   return (
@@ -41,6 +42,7 @@ function NewPost() {
               <div className="col-lg-4"  style={{height:"180px",width:"180px"}}>
                 <img src="https://source.unsplash.com/160x160/?socialmedia" alt="media" className="rounded"/>
               </div>
+              <DragAndDrop />
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
-import React, { Component, useState, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 import FacebookLogin from "react-facebook-login";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { access_token, uid, pageid } from "../GlobalState";
 import axios from "axios";
-import { Link, Router, useHistory } from "react-router-dom";
+// import { Link, Router, useHistory } from "react-router-dom";
 
 const Login = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const [user_accessToken, Setuseraccesstoken] = useRecoilState(access_token);
   const [isLoggedin, setisLoggedin] = useState(false);
   const [userData, setUserdata] = useState(null);

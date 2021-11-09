@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db, auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
-import { Link,useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { CombineAuthButton } from "./Login";
 
 
@@ -30,13 +30,16 @@ const Signup = (props) => {
         setUser(user);
         // console.log(user);
         try {
-          const docRef = addDoc(collection(db, "users"), {
+          addDoc(collection(db, "users"), {
             name: name,
             organization_name: orgname,
             email: email,
           }).then((ref) => {
             // console.log("ref", ref);
             console.log("Document written with ID: ", ref.id);
+            history.push({
+              pathname:'/'
+            })
             return ref;
           });
         } catch (e) {
@@ -48,6 +51,7 @@ const Signup = (props) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(errorMessage,errorCode)
         // ..
       });
   };

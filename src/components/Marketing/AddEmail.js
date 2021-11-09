@@ -1,6 +1,16 @@
 import React from "react";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import CsvDnD from '../CsvDnD'
 const AddEmail = () => {
+  const [email,setEmail] = useState("")
+  const addEmail =()=>{
+    axios.post('https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/addEmailList',{
+      userId:"test",
+      emailId:email,
+      schedule:"testtime"
+    }).then(alert("Email added Succesfully"))
+  }
   return (
     <div>
       <div className="mb-2">
@@ -12,6 +22,8 @@ const AddEmail = () => {
           className="form-control"
           id="exampleFormControlInput1"
           placeholder="name@example.com"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
         />
       </div>
       <div className="mb-2">
@@ -20,7 +32,8 @@ const AddEmail = () => {
         </label>
         <input className="form-control" type="file" id="formFile" />
       </div>
-      <button type="submit" className="btn btn-warning btn-sm">Submit</button>
+      <CsvDnD />
+      <button type="submit" className="btn btn-warning btn-sm" onClick={addEmail}>Submit</button>
     </div>
   );
 };

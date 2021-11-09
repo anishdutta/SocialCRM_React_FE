@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
@@ -5,6 +6,7 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import Index from "./pages/Index";
 // import { useState } from "react";
 import Post from "./pages/Post";
+import Facebook from "./pages/Facebook";
 import Newpost from "./pages/Newpost";
 import Marketing from "./pages/Marketing";
 import Chat from "./pages/Chat";
@@ -53,9 +55,9 @@ function App() {
             <Route path="/" exact render={() => <Index />} />
             {user && (
               <>
-                <Route path="/facebook" exact render={() => <Post />} />
-                <Route path="/instagram" exact render={() => <Post />} />
-                <Route path="/linkedin" exact render={() => <Post />} />
+                <Route path="/facebook" exact render={() => <Facebook />} />
+                <Route path="/instagram" exact render={() => <Facebook />} />
+                <Route path="/linkedin" exact render={() => <Facebook />} />
                 <Route path="/newpost" exact render={() => <Newpost />} />
                 <Route path="/marketing" exact render={() => <Marketing />} />
                 <Route path="/chat" exact render={() => <Chat />} />
@@ -72,7 +74,7 @@ function App() {
               render={() => <Signup user={user} setUser={setUser} />}
             />
 
-            <Route path="*" render={()=><h1>Page Not Found</h1>}></Route>
+            <Route path="*" render={() => <h1>Page Not Found</h1>}></Route>
           </Switch>
         </div>
       </div>

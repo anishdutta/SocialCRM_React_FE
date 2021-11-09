@@ -1,16 +1,21 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import FacebookLogin from "react-facebook-login";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { access_token, uid, pageid } from "../../GlobalState";
 import axios from "axios";
+// import { useHistory } from "react-router-dom";
 
-const FbLogin = () => {
+const FbLogin = (props) => {
   const [user_accessToken, Setuseraccesstoken] = useRecoilState(access_token);
-  const [isLoggedin, setisLoggedin] = useState(false);
+  // const isLoggedin = props.isLoggedin;
+  const setisLoggedin = props.setisLoggedin;
   const [userData, setUserdata] = useState(null);
   const [user_uid, setUseruid] = useRecoilState(uid);
   const [page_id, setpageid] = useRecoilState(pageid);
   const uidvalue = useRecoilValue(uid);
+  // const history = useHistory();
 
   useEffect(() => {
     axios
@@ -32,28 +37,32 @@ const FbLogin = () => {
       });
   }, [user_uid]);
 
-  return isLoggedin ? (
-    "✅ Online"
-  ) : (
-    <div>
-      {console.log(uidvalue, user_uid, user_accessToken)}
-      <FacebookLogin
-        appId="198755418766865"
-        autoLoad={false}
-        fields="name,email,picture"
-        // onClick={componentClicked}
-        scope="pages_show_list,read_page_mailboxes,pages_messaging,pages_read_engagement, pages_manage_metadata, public_profile"
-        callback={(response) => {
-          console.log(response);
-          setUserdata(response);
-          Setuseraccesstoken(response.accessToken);
-          setUseruid(response.userID);
-          if (response.userID) {
-            setisLoggedin(true);
-          }
-        }}
-      />
-    </div>
+  // useEffect(() => {
+  //   if (isLoggedin) {
+  //     history.push("/facebook");
+  //   }
+  // }, [isLoggedin]);
+
+  return (
+    // !isLoggedin && (
+    // {console.log(uidvalue, user_uid, user_accessToken)}
+    <FacebookLogin
+      appId="198755418766865"
+      autoLoad={false}
+      fields="name,email,picture"
+      // onClick={componentClicked}
+      scope="pages_show_list,read_page_mailboxes,pages_messaging,pages_read_engagement, pages_manage_metadata, public_profile"
+      callback={(response) => {
+        console.log(response);
+        setUserdata(response);
+        Setuseraccesstoken(response.accessToken);
+        setUseruid(response.userID);
+        if (response.userID) {
+          setisLoggedin(true);
+        }
+      }}
+    />
+    // )
   );
 };
 

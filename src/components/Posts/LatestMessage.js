@@ -1,6 +1,8 @@
 import React from "react";
 import linkedin from "../assets/linkedin.png";
 import { Link } from "react-router-dom";
+import './posts.css'
+
 
 const LatestMessage = () => {
   return (
@@ -15,19 +17,19 @@ const LatestMessage = () => {
             <img
               src={linkedin}
               alt="pic"
-              style={{ height: "4em" }}
+              style={{ height: "3em" }}
               className="rounded-circle"
             />
-            <div className="mx-3">
-              <h5 className="text-black">Sender's Name</h5>
-              <p className="text-secondary">Latest Message asjdkjj</p>
+            <div className="mx-2 pt-1">
+              <h3 className="text-black sender_name">Sender's Name</h3>
+              <h4 className="text-secondary latest_msg">Latest Message asjdkjj</h4>
             </div>
           </div>
           <div
             className="bg-warning rounded-circle d-flex justify-content-center"
-            style={{ width: "2em" }}
+            style={{ width: "1.5em",height:"1.5em" }}
           >
-            <span className="text-white fs-5">4</span>
+            <span className="text-white fs-6">4</span>
           </div>
         </div>
       </Link>
@@ -38,19 +40,19 @@ const LatestMessage = () => {
             <img
               src={linkedin}
               alt="pic"
-              style={{ height: "4em" }}
+              style={{ height: "3em" }}
               className="rounded-circle"
             />
-            <div className="mx-3">
-              <h5 className="text-black">Sender's Name</h5>
-              <p className="text-secondary">Latest Message asjdkjj</p>
+            <div className="mx-2 pt-1">
+              <h3 className="text-black sender_name">Sender's Name</h3>
+              <h4 className="text-secondary latest_msg">Latest Message asjdkjj</h4>
             </div>
           </div>
           <div
             className="bg-warning rounded-circle d-flex justify-content-center"
-            style={{ width: "2em" }}
+            style={{ width: "1.5em",height:"1.5em" }}
           >
-            <span className="text-white fs-5">4</span>
+            <span className="text-white fs-6">4</span>
           </div>
         </div>
       </Link>
@@ -60,19 +62,19 @@ const LatestMessage = () => {
             <img
               src={linkedin}
               alt="pic"
-              style={{ height: "4em" }}
+              style={{ height: "3em" }}
               className="rounded-circle"
             />
-            <div className="mx-3">
-              <h5 className="text-black">Sender's Name</h5>
-              <p className="text-secondary">Latest Message asjdkjj</p>
+            <div className="mx-2 pt-1">
+              <h3 className="text-black sender_name">Sender's Name</h3>
+              <h4 className="text-secondary latest_msg">Latest Message asjdkjj</h4>
             </div>
           </div>
           <div
             className="bg-warning rounded-circle d-flex justify-content-center"
-            style={{ width: "2em" }}
+            style={{ width: "1.5em",height:"1.5em" }}
           >
-            <span className="text-white fs-5">4</span>
+            <span className="text-white fs-6">4</span>
           </div>
         </div>
       </Link>

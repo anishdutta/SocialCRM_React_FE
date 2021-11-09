@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { Table } from "react-bootstrap";
+import axios from "axios";
 
 const LastMail = () => {
+  const [emails,setEmails] = useState([])
+  useEffect(() => {
+    axios.get("https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getEmailList/test").then((res) => setEmails(res.data))
+  }, [emails]);
+
   return (
     <Table bordered hover>
       <thead>
@@ -12,42 +18,13 @@ const LastMail = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td className="">
-              test@sociophin.com
-          </td>
-          <td>30/10/2021</td>
+      {emails.map((data,index)=>(
+        <tr key={data.emailId}>
+          <td>{index+1}</td>
+          <td className="">{data.emailId}</td>
+          <td>{data.lastEmail}</td>
         </tr>
-        {/* repeated code  */}
-        <tr>
-          <td>1</td>
-          <td className="">
-              test@sociophin.com
-          </td>
-          <td>30/10/2021</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td className="">
-              test@sociophin.com
-          </td>
-          <td>30/10/2021</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td className="">
-              test@sociophin.com
-          </td>
-          <td>30/10/2021</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td className="">
-              test@sociophin.com
-          </td>
-          <td>30/10/2021</td>
-        </tr>
+      ))}  
       </tbody>
     </Table>
   );
