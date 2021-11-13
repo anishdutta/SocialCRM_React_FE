@@ -1,6 +1,53 @@
-import React from 'react'
+import React ,{useState,useEffect}from 'react'
 import { Table } from "react-bootstrap";
-const LatestComment = () => {
+import axios from "axios"
+import { useRecoilValue } from "recoil";
+import { access_token, pageid, uid } from "../../GlobalState";
+
+const LatestComment = (props) => {
+  const selectpostid = props.id
+   const accessid = useRecoilValue(access_token);
+   //   const userid = useRecoilValue(uid);
+  //  const page_id = useRecoilValue(pageid);
+  const [comments, setcomments] = useState([]);
+  const [textInput, setTextInput] = React.useState("");
+
+
+    useEffect(() => {
+      getComments();
+    }, [selectpostid]);
+
+    function getComments() {
+      axios
+        .get(
+          `https://graph.facebook.com/v11.0/${selectpostid}/comments?fields=message,from,comments&access_token=${accessid}`
+        )
+        .then((response) => {
+          setcomments(response.data.data);
+          console.log("id of rec", response.data);
+        });
+    }
+
+    const handleChange = (event) => {
+      setTextInput(event.target.value);
+    };
+
+    function postreply(item) {
+      console.log(textInput);
+      const body = { message: "" + textInput + "" };
+      axios
+        .post(
+          `https://graph.facebook.com/v11.0/${item}/comments?access_token=${accessid}`,
+          body
+        )
+        .then((response) => {
+          console.log(response.data);
+          setTextInput("");
+          getComments();
+        });
+    }
+
+
     return (
         <Table hover>
       <thead>

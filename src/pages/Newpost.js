@@ -1,9 +1,10 @@
 import React from "react";
 import "../components/newposts.css";
+import DragAndDrop from '../components/DragAndDrop'
 
 function NewPost() {
   return (
-    <>
+    <div>
       <div className="container py-5">
         <h5 className="mb-5">Create New Post</h5>
         <div className="row">
@@ -41,11 +42,12 @@ function NewPost() {
               <div className="col-lg-4"  style={{height:"180px",width:"180px"}}>
                 <img src="https://source.unsplash.com/160x160/?socialmedia" alt="media" className="rounded"/>
               </div>
+              <DragAndDrop />
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

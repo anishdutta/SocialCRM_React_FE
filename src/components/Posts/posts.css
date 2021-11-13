@@ -14,6 +14,12 @@
     text-decoration: none;
     color: #202020;
 }
+.sender_name{
+    font-size: 0.99em;
+}
+.latest_msg{
+    font-size: 0.8em;
+}
 @media screen and (max-width:768px){
     .posttable td{
         font-size: 0.8em;
@@ -33,4 +39,11 @@
     .comment th{
         font-size: 0.8em;
     }
+    .message,.comment{
+        width:100vw;
+    }
+}
+.more_options_post{
+    background: none;
+    border: none;
 }

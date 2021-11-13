@@ -1,15 +1,15 @@
 import React from "react";
 
-const Saved = () => {
+const Saved = ({email,profilepic,name}) => {
   return (
-    <div className="d-flex flex-column justify-content-center h-100">
+    <div className="d-flex flex-column justify-content-center align-content-between h-100">
       <div className="bg-light rounded shadow my-auto p-3">
         <div className="d-flex justify-content-center">
-            <img src="https://source.unsplash.com/160x160/?avatar" alt="" height="150px" className="rounded-circle" />
+            <img src={profilepic} alt="" height="150px" className="rounded-circle" />
         </div>
         <div className="mt-2">
-            <h5 className="text-center">John Doe</h5>
-            <p className="text-center">johndoe@gmail.com</p>
+            <h5 className="text-center">{name}</h5>
+            <p className="text-center">{email}</p>
         </div>
       </div>
       <div className="bg-light rounded shadow my-auto p-3 saved">
