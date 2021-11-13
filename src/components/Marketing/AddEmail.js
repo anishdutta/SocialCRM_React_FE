@@ -33,7 +33,7 @@ const AddEmail = () => {
         <input className="form-control" type="file" id="formFile" />
       </div>
       <CsvDnD />
-      <button type="submit" className="btn btn-warning btn-sm" onClick={addEmail}>Submit</button>
+      <button type="submit" className="btn btn-warning btn-sm mt-2" onClick={addEmail}>Submit</button>
     </div>
   );
 };

@@ -28,6 +28,7 @@ const FbLogin = (props) => {
           // history.push("/home");
           Setuseraccesstoken(response.data.data[0].access_token);
           setpageid(response.data.data[0].id);
+          
         } else {
           console.log(response.data.length);
           alert("No page found linked to this account");

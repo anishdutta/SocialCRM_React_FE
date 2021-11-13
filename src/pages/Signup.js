@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { db, auth } from "../firebase";
+import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+// import { collection, addDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 import { CombineAuthButton } from "./Login";
-
+import axios from "axios";
 
 const Signup = (props) => {
-  const history = useHistory() 
+  const history = useHistory();
 
-  if(props.user){
+  if (props.user) {
     history.push({
-      pathname:'/'
-    })
+      pathname: "/",
+    });
   }
 
   const [name, setName] = useState("");
@@ -28,20 +28,31 @@ const Signup = (props) => {
         // Signed in
         const user = userCredential.user;
         setUser(user);
-        // console.log(user);
+        console.log(user);
         try {
-          addDoc(collection(db, "users"), {
-            name: name,
-            organization_name: orgname,
-            email: email,
-          }).then((ref) => {
-            // console.log("ref", ref);
-            console.log("Document written with ID: ", ref.id);
-            history.push({
-              pathname:'/'
-            })
-            return ref;
-          });
+          // addDoc(collection(db, "users"), {
+          //   name: name,
+          //   organization_name: orgname,
+          //   email: email,
+          // }).then((ref) => {
+          //   // console.log("ref", ref);
+          //   console.log("Document written with ID: ", ref.id);
+          //   history.push({
+          //     pathname:'/'
+          //   })
+          //   return ref;
+          // });
+          axios
+            .post(
+              "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/createUser",
+              {
+                UserId: user.uid,
+                emailId: email,
+                displayImg: "test",
+                orgName: orgname,
+              }
+            )
+            .then((res) => console.log(res));
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -51,7 +62,7 @@ const Signup = (props) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage,errorCode)
+        console.log(errorMessage, errorCode);
         // ..
       });
   };
@@ -59,7 +70,7 @@ const Signup = (props) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100">
       <div className="shadow col-lg-4 bg-light">
-       <CombineAuthButton />
+        <CombineAuthButton />
         <div className="px-3 mt-3">
           <h5 className="">
             Register<span className="text-warning"> Now</span>

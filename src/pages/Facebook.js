@@ -39,42 +39,6 @@ function Post() {
       });
   }, [page_id, accessid]);
 
-  useEffect(() => {
-    getComments();
-  }, [selectpostid]);
-
-  function getComments() {
-    axios
-      .get(
-        `https://graph.facebook.com/v11.0/${selectpostid}/comments?fields=message,from,comments&access_token=${accessid}`
-      )
-      .then((response) => {
-        setcomments(response.data.data);
-        console.log("id of rec", response.data);
-      });
-  }
-
-  const handleChange = (event) => {
-    setTextInput(event.target.value);
-  };
-
-  function postreply(item) {
-    console.log(textInput);
-    const body = { message: "" + textInput + "" };
-    axios
-      .post(
-        `https://graph.facebook.com/v11.0/${item}/comments?access_token=${accessid}`,
-        body
-      )
-      .then((response) => {
-        console.log(response.data);
-        setTextInput("");
-        getComments();
-      });
-  }
-
-
-  
   return !isLoggedin ? (
     <div className="h-100 d-flex align-items-center justify-content-center">
       <FbLogin isLoggedin={isLoggedin} setisLoggedin={setisLoggedin} />
@@ -102,47 +66,49 @@ function Post() {
             </ul>
           </div>
           <div className="">
-          <Link
-                  to="/newpost"
-                  className="text-decoration-none text-center mx-3"
+            <Link
+              to="/newpost"
+              className="text-decoration-none text-center mx-3"
+            >
+              <div className="btn-group">
+                <button
+                  className="btn btn-warning btn-sm text-light"
+                  type="button"
                 >
-                  <div className="btn-group">
-                    <button
-                      className="btn btn-warning btn-sm text-light"
-                      type="button"
-                    >
-                      Create New Post
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split text-light"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <span className="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul className="dropdown-menu">
-                      <option className="dropdown-item">Upload</option>
-                      <option className="dropdown-item">
-                        Upload IGTV Video
-                      </option>
-                    </ul>
-                  </div>
-                </Link>
-                <button className="btn btn-light btn-sm">See All</button>
+                  Create New Post
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split text-light"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span className="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul className="dropdown-menu">
+                  <option className="dropdown-item">Upload</option>
+                  <option className="dropdown-item">Upload IGTV Video</option>
+                </ul>
+              </div>
+            </Link>
+            <button className="btn btn-light btn-sm">See All</button>
           </div>
         </div>
         <div className=" col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm post">
-          <LatestPost posts={posts} />
+          <LatestPost
+            posts={posts}
+            selectedpostid={selectpostid}
+            setselectedpostid={setSelectpostid}
+          />
         </div>
-        {/* <div className="col-lg-12 py-0 px-0 d-flex justify-content-between flex-wrap row"> */}
-        <div className="col-lg-5 border bg-light mx-auto my-2 rounded shadow-sm message">
-          <LatestMessage />
+        <div className="col-lg-12  container-fluid d-flex flex-wrap justify-content-between align-items-center p-0">
+          <div className="col-lg-5 border bg-light my-2 rounded shadow-sm message">
+            <LatestMessage />
+          </div>
+          <div className="col-lg-6 border p-3 bg-light  my-2 rounded shadow-sm comment">
+            <LatestComment id={selectpostid}/>
+          </div>
         </div>
-        <div className="col-lg-6 border p-3 bg-light mx-auto my-2 rounded shadow-sm comment">
-          <LatestComment />
-        </div>
-        {/* </div> */}
       </div>
     </div>
   );

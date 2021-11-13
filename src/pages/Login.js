@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link ,useHistory} from "react-router-dom";
-import '../App.css'
+import { Link, useHistory } from "react-router-dom";
+import "../App.css";
+import axios from "axios";
 
-function Login({setUser,user}) {
-  const history = useHistory()
+function Login({ setUser, user }) {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  if(user){
-    history.push('/')
+  if (user) {
+    history.push("/");
   }
 
   const handleSubmit = async (e) => {
@@ -19,9 +20,16 @@ function Login({setUser,user}) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        setUser(user)
+        setUser(user);
         console.log(user);
-        history.push('/')
+        axios
+          .get(
+            `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getUserDetails/${user.uid}`
+          )
+          .then((res) => {
+            console.log(res);
+          });
+        history.push("/");
         // ...
       })
       .catch((error) => {
@@ -86,20 +94,23 @@ function Login({setUser,user}) {
 export default Login;
 
 export const CombineAuthButton = () => {
-  
   return (
     <div className="d-flex">
       <Link
         to="/login"
         className="text-decoration-none text-center m-auto w-50"
       >
-        <button className="btn btn-warning text-light w-100 rounded-0">Login</button>
+        <button className="btn btn-warning text-light w-100 rounded-0">
+          Login
+        </button>
       </Link>
       <Link
         to="/signup"
         className="text-decoration-none text-center m-auto w-50"
       >
-        <button className="btn btn-warning text-light w-100 rounded-0">Signup</button>
+        <button className="btn btn-warning text-light w-100 rounded-0">
+          Signup
+        </button>
       </Link>
     </div>
   );

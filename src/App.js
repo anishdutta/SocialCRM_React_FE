@@ -61,6 +61,7 @@ function App() {
                 <Route path="/newpost" exact render={() => <Newpost />} />
                 <Route path="/marketing" exact render={() => <Marketing />} />
                 <Route path="/chat" exact render={() => <Chat />} />
+                <Route path="/chat/:id" exact render={() => <Chat />} />
               </>
             )}
             <Route

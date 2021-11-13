@@ -39,6 +39,9 @@
     .comment th{
         font-size: 0.8em;
     }
+    .message,.comment{
+        width:100vw;
+    }
 }
 .more_options_post{
     background: none;

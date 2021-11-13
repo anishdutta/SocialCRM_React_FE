@@ -11,6 +11,8 @@ import richpanellogo from "./High-Res-Logo-Icon-Blue.png";
 import myposts from "./post2.png";
 import posts from "./post.png";
 import { Link, useHistory } from "react-router-dom";
+
+
 const Inboxlist = () => {
   const [item, setItem] = useState("");
   // const [data,setData] = useState("")

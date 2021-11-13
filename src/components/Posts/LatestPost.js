@@ -4,7 +4,7 @@ import dot from "../assets/dot.png";
 import { Table } from "react-bootstrap";
 import "./posts.css";
 
-const LatestPost = ({ posts }) => {
+const LatestPost = ({ posts, selectedpostid, setselectedpostid }) => {
   return (
     <Table bordered hover className="posttable">
       <thead>
@@ -21,7 +21,7 @@ const LatestPost = ({ posts }) => {
       </thead>
       <tbody>
         {posts.map((data, index) => (
-          <tr>
+          <tr onClick={()=>{setselectedpostid(data.id)}}>
             <td>{index + 1}</td>
             <td className="w-100 d-flex">
               <img

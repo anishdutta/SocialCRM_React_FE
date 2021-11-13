@@ -20,5 +20,8 @@
     .emails td,.emails th{
         font-size: 0.8em;
     }
+    .emails,.addemail{
+        width:100vw;
+    }
 
 }
