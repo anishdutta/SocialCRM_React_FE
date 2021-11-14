@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth,signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore();
-
+const storage = getStorage(app);
 const signOutUser = ()=>{
   signOut(auth).then(() => {
     console.log('Signed Out');
@@ -33,4 +34,4 @@ const signOutUser = ()=>{
   // window.location.reload()
   window.location.replace('/')
 }
-export { auth, analytics, db,signOutUser };
+export { auth, analytics, db,signOutUser,storage };

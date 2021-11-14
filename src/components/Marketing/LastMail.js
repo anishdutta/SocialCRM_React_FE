@@ -3,37 +3,51 @@ import { Table, Modal, Button } from "react-bootstrap";
 import axios from "axios";
 
 const LastMail = () => {
+  const userdbuid = localStorage.getItem("dbuseruid");
+
   const [emails, setEmails] = useState([]);
+  const [user, setuser] = useState([]);
   useEffect(() => {
     axios
       .get(
-        "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getEmailList/test"
+        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getEmailList/${userdbuid}`
       )
       .then((res) => setEmails(res.data));
-  }, [emails]);
+  }, [emails, userdbuid]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getUserDetails/${userdbuid}`
+      )
+      .then((res) => {
+        console.log(res.data[0]);
+        setuser(res.data[0]);
+      });
+  }, [userdbuid]);
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [To, setTo] = useState("");
-  const [from, setFrom] = useState("");
+  // const [from, setFrom] = useState("");
   const [Subject, setSubject] = useState("");
   const [Message, setMessage] = useState("");
 
   const sendEmail = () => {
-    console.log(To, from, Subject, Message);
+    // console.log(To, from, Subject, Message);
     axios
       .post(
         "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/send_mail",
-        { To, from, Message, Subject },
+        { userId: userdbuid, To, from: user.orgName, Message, Subject },
         { headers: { "Content-Type": "application/json" } }
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         alert("Email Sent");
       });
-    setFrom("");
+    // setFrom("");
     setMessage("");
     setSubject("");
   };
@@ -75,7 +89,7 @@ const LastMail = () => {
         </Modal.Header>
         <Modal.Body>
           <div className="">
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
                 To
               </label>
@@ -87,8 +101,8 @@ const LastMail = () => {
                   setTo(e.target.value);
                 }}
               />
-            </div>
-            <div className="mb-3">
+            </div> */}
+            {/* <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
                 From
               </label>
@@ -100,7 +114,7 @@ const LastMail = () => {
                   setFrom(e.target.value);
                 }}
               />
-            </div>
+            </div> */}
             <div className="mb-3">
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Subject

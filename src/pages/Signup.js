@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 // import { collection, addDoc } from "firebase/firestore";
@@ -9,11 +10,14 @@ import axios from "axios";
 const Signup = (props) => {
   const history = useHistory();
 
-  if (props.user) {
-    history.push({
-      pathname: "/",
-    });
-  }
+  useEffect(() => {
+    if (props.user) {
+      history.push({
+        pathname: "/",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.user]);
 
   const [name, setName] = useState("");
   const [orgname, setOrgName] = useState("");
@@ -25,23 +29,9 @@ const Signup = (props) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         setUser(user);
-        console.log(user);
         try {
-          // addDoc(collection(db, "users"), {
-          //   name: name,
-          //   organization_name: orgname,
-          //   email: email,
-          // }).then((ref) => {
-          //   // console.log("ref", ref);
-          //   console.log("Document written with ID: ", ref.id);
-          //   history.push({
-          //     pathname:'/'
-          //   })
-          //   return ref;
-          // });
           axios
             .post(
               "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/createUser",
@@ -52,7 +42,15 @@ const Signup = (props) => {
                 orgName: orgname,
               }
             )
-            .then((res) => console.log(res));
+            .then(
+              (res) => {
+                localStorage.setItem("dbuseruid", user.uid);
+                history.push({
+                  pathname: "/",
+                });
+              }
+              // console.log(res)
+            );
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -62,7 +60,7 @@ const Signup = (props) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage, errorCode);
+        // console.log(errorMessage, errorCode);
         // ..
       });
   };

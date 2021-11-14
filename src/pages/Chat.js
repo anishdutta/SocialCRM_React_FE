@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "../components/Chats/chat.css";
 import Dm from "../components/Chats/Dm";
@@ -6,27 +8,27 @@ import Saved from "../components/Chats/Saved";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useRecoilValue } from "recoil";
-import { access_token, uid, pageid } from "../GlobalState";
+// import { useRecoilValue } from "recoil";
+// import { access_token, uid, pageid } from "../GlobalState";
 const Chat = () => {
   const { id } = useParams();
 
-  const [item, setItem] = useState("");
+  // const [item, setItem] = useState("");
   // const [data,setData] = useState("")
-  const [posts, setPosts] = useState([]);
-  const accessid = useRecoilValue(access_token);
-  const userid = useRecoilValue(uid);
-  const page_id = useRecoilValue(pageid);
-  
-  console.log(posts);
+  // const [posts, setPosts] = useState([]);
+  const accessid = localStorage.getItem("fbaccesstoken");
+  const userid = localStorage.getItem("fbuserid");
+  const page_id = localStorage.getItem("fbpageid");
+
+  // console.log(posts);
   const [mymessage, setmessage] = useState([]);
   const [sender, setsender] = useState([]);
-  const [msg, setmsg] = useState([]);
+  const [msg, setmsg] = useState("");
   const [ismsg, setismsg] = useState([]);
   const [senderid, setsenderid] = useState("");
   const [userdp, setuserdp] = useState("");
   const [email, setemail] = useState("");
-  console.log("hey there" + id);
+  // console.log("hey there" + id);
   //const accessid = "EAAC0xFohZChEBAMXdI29RAEJ5cHW4Bpi0qNLJo1M5rDjm84SNicojwuUivgHGl3TZBCi6HiMJ5wjc5ULdy7HP1YbvLaczm7yz1A8ZACZAaZA7RkHhFHPHgekfU3jbZCBbRqlXC6zr0H1lD3u0Wf1g3JSjhU94xwiH4ZB3GFWunbr1y5cnHLM3XHbcenr0G028oUheO4kCqZBtwZDZD";
   useEffect(() => {
     getfunc();
@@ -43,7 +45,7 @@ const Chat = () => {
         setemail(response.data.participants.data[0].email);
         setsenderid(response.data.participants.data[0].id);
         console.log(response.data);
-        console.log("id of rec" + senderid);
+        // console.log("id of rec" + senderid);
       });
   }
 
@@ -56,7 +58,7 @@ const Chat = () => {
         setuserdp(response.data.profile_pic);
         console.log(response.data);
       });
-  }, []);
+  }, [senderid,accessid]);
 
   function convertToLocalTime(serverDate) {
     var b = serverDate.split(/\D+/);
@@ -65,7 +67,8 @@ const Chat = () => {
   }
 
   function PostMsg() {
-    //   console.log(senderid);
+      console.log(senderid);
+    console.log(msg)
     const body = {
       messaging_type: "RESPONSE",
       recipient: '{\n  "id": "' + senderid + '"\n}',
@@ -77,12 +80,12 @@ const Chat = () => {
         body
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setmsg("");
         getfunc();
       });
   }
-  console.log("this  is message", mymessage);
+  // console.log("this  is message", mymessage);
 
   return (
     <main className="container-fluid px-5 h-100">

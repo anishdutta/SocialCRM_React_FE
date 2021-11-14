@@ -3,13 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import { CookiesProvider } from "react-cookie";
 import { RecoilRoot } from "recoil";
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+    <CookiesProvider>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

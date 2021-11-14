@@ -17,9 +17,21 @@
 .text_input input{
     outline: none;
     border: none;
-}    
+}  
+.reply_input{
+    background-color: #e9e9e9;
+    border-radius: 1em;
+    padding: 0.3em 0em;
+}
+.reply_input input{
+    outline: none;
+    border: none;
+}  
+
 .specific_chat,.specific_chat_primary{
-    height: 8em;
+    height: auto;
+    align-items: center;
+    margin-left:1em;
     border-radius: .5em;
 }
 .specific_chat_primary{
@@ -27,4 +39,7 @@
 }
 .specific_chat{
     background-color: #FEF2D5;
+}
+.send_button{
+    border: none;
 }

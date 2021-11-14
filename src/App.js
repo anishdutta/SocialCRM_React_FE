@@ -5,7 +5,7 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 // import Header from "./components/Header";
 import Index from "./pages/Index";
 // import { useState } from "react";
-import Post from "./pages/Post";
+// import Post from "./pages/Post";
 import Facebook from "./pages/Facebook";
 import Newpost from "./pages/Newpost";
 import Marketing from "./pages/Marketing";
@@ -15,36 +15,26 @@ import Signup from "./pages/Signup";
 import Header from "./components/Header";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 // import { auth } from "./firebase";
+// import { useCookies } from "react-cookie";
 
 function App() {
   const [user, setUser] = useState(null);
-  // console.log(auth.currentUser);
-
-  // useEffect(() => {
-  //   setUser(auth.currentUser);
-  // }, []);
 
   const auth = getAuth();
+  if (user) {
+    localStorage.setItem("dbuseruid", user.uid);
+  }
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        // const uid = user.uid;
         setUser(user);
-        // ...
+        // console.log(user);
       } else {
-        // User is signed out
-        // ...
         console.log("no user");
       }
     });
   }, []);
-
-  // useEffect(()=>{
-  //   window.location.reload(false)
-  // },[user])
 
   return (
     <Router>
