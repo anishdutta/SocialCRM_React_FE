@@ -27,6 +27,7 @@ const Dm = ({
   const uid = localStorage.getItem("dbuseruid");
   useEffect(() => {
     setmsg(reply);
+     // eslint-disable-next-line 
   }, [reply]);
   const getQuickReply = () => {
     axios
@@ -55,6 +56,7 @@ const Dm = ({
   };
   useEffect(() => {
     getQuickReply();
+     // eslint-disable-next-line 
   }, [quickReply]);
 
   return (
