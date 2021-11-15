@@ -1,16 +1,26 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import CsvDnD from '../CsvDnD'
+import CsvDnD from "../CsvDnD";
 const AddEmail = () => {
-  const [email,setEmail] = useState("")
-  const addEmail =()=>{
-    axios.post('https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/addEmailList',{
-      userId:"test",
-      emailId:email,
-      schedule:"testtime"
-    }).then(alert("Email added Succesfully"))
-  }
+  const [email, setEmail] = useState("");
+  const dbuseruid = localStorage.getItem("dbuseruid");
+  const addEmail = () => {
+    if (email.length) {
+      axios
+        .post(
+          "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/addEmailList",
+          {
+            userId: dbuseruid,
+            emailId: email,
+            schedule: "testtime",
+          }
+        )
+        .then(alert("Email added Succesfully"));
+    } else {
+      alert("Please Enter Email");
+    }
+  };
   return (
     <div>
       <div className="mb-2">
@@ -23,7 +33,7 @@ const AddEmail = () => {
           id="exampleFormControlInput1"
           placeholder="name@example.com"
           value={email}
-          onChange={(e)=>setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className="mb-2">
@@ -33,7 +43,13 @@ const AddEmail = () => {
         <input className="form-control" type="file" id="formFile" />
       </div>
       <CsvDnD />
-      <button type="submit" className="btn btn-warning btn-sm mt-2" onClick={addEmail}>Submit</button>
+      <button
+        type="submit"
+        className="btn btn-warning btn-sm mt-2"
+        onClick={addEmail}
+      >
+        Submit
+      </button>
     </div>
   );
 };

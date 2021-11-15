@@ -8,109 +8,136 @@ import LatestMessage from "../components/Posts/LatestMessage";
 
 import axios from "axios";
 import { useRecoilValue } from "recoil";
-import { access_token, pageid, uid } from "../GlobalState";
+// import { access_token, pageid, uid } from "../GlobalState";
 import { useEffect, useState } from "react";
 import FbLogin from "../components/Login/Facebook";
 import { Link } from "react-router-dom";
 
 function Post() {
-  const accessid = useRecoilValue(access_token);
+  const accessid = localStorage.getItem("fbaccesstoken");
+  // const accessid = useRecoilValue(access_token);
   //   const userid = useRecoilValue(uid);
-  const page_id = useRecoilValue(pageid);
+  const page_id = localStorage.getItem("fbpageid");
+  // const page_id = useRecoilValue(pageid);
   //   const [item, setItem] = useState("");
-  const [posts, setPosts] = useState([]);
   const [comments, setcomments] = useState([]);
+  const [isloading, setisloading] = useState(true);
   const [textInput, setTextInput] = React.useState("");
 
   const [isLoggedin, setisLoggedin] = useState(false);
 
-  const [selectpostid, setSelectpostid] = useState(0);
+  const [selectpostcomments, setSelectpostcomments] = useState(0);
 
-  console.log(posts);
+  // console.log(posts);
+  useEffect(() => {
+    const accessid = localStorage.getItem("fbaccesstoken");
+    console.log(accessid);
+  }, [isLoggedin]);
+
+  // const a = async () => {
+  //   const resp = await axios.get(
+  //     `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message,likes,reactions,created_time,permalink_url,comments&access_token=${accessid}`
+  //   )
+  //   console.log(resp);
+  //   console.log("dnbsjhv")
+  // };
 
   useEffect(() => {
     axios
       .get(
-        `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message&access_token=${accessid}`
+        `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message,likes,reactions,created_time,permalink_url,comments&access_token=${accessid}`
       )
       .then((response) => {
-        console.log(response.data.data);
-        setPosts(response.data.data);
+        console.log("yahan nhi aaya");
+        // setisloading(false);
+        // console.log(response.data.data);
+        // setPosts(response.data.data);
+      })
+      .catch((err) => {
+        if (err) {
+          localStorage.removeItem("fbaccesstoken");
+          localStorage.removeItem("fbpageid");
+          localStorage.removeItem("fbuserid");
+        }
       });
-  }, [page_id, accessid]);
+  }, []);
 
-  return !isLoggedin ? (
+  return !accessid ? (
     <div className="h-100 d-flex align-items-center justify-content-center">
-      <FbLogin isLoggedin={isLoggedin} setisLoggedin={setisLoggedin} />
+      <FbLogin setisLoggedin={setisLoggedin} />
     </div>
   ) : (
-    <div className=" px-5 pt-3 h-100">
-      <div className="row">
-        <div className="d-flex justify-content-between px-0">
-          <div className="btn-group">
-            <button className="btn btn-light btn-sm" type="button">
-              Post Status
-            </button>
-            <button
-              type="button"
-              className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span className="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <ul className="dropdown-menu">
-              <option className="dropdown-item">All</option>
-              <option className="dropdown-item">Filter</option>
-              <option className="dropdown-item">Filter</option>
-            </ul>
+    <>
+      {/* {isLoggedin && ( */}
+      <div className=" px-5 pt-3 h-100">
+        <div className="row">
+          <div className="d-flex justify-content-between px-0">
+            <div className="btn-group">
+              <button className="btn btn-light btn-sm" type="button">
+                Post Status
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span className="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul className="dropdown-menu">
+                <option className="dropdown-item">All</option>
+                <option className="dropdown-item">Filter</option>
+                <option className="dropdown-item">Filter</option>
+              </ul>
+            </div>
+            <div className="">
+              <Link
+                to="/newpost"
+                className="text-decoration-none text-center mx-3"
+              >
+                <div className="btn-group">
+                  <button
+                    className="btn btn-warning btn-sm text-light"
+                    type="button"
+                  >
+                    Create New Post
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split text-light"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span className="visually-hidden">Toggle Dropdown</span>
+                  </button>
+                  <ul className="dropdown-menu">
+                    <option className="dropdown-item">Upload</option>
+                    <option className="dropdown-item">Upload IGTV Video</option>
+                  </ul>
+                </div>
+              </Link>
+              <button className="btn btn-light btn-sm">See All</button>
+            </div>
           </div>
-          <div className="">
-            <Link
-              to="/newpost"
-              className="text-decoration-none text-center mx-3"
-            >
-              <div className="btn-group">
-                <button
-                  className="btn btn-warning btn-sm text-light"
-                  type="button"
-                >
-                  Create New Post
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-warning dropdown-toggle dropdown-toggle-split text-light"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span className="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul className="dropdown-menu">
-                  <option className="dropdown-item">Upload</option>
-                  <option className="dropdown-item">Upload IGTV Video</option>
-                </ul>
-              </div>
-            </Link>
-            <button className="btn btn-light btn-sm">See All</button>
+          <div className=" col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm post">
+            <LatestPost
+              setisLoggedin={setisLoggedin}
+              selectedpostcomments={selectpostcomments}
+              setselectedpostcomments={setSelectpostcomments}
+            />
           </div>
-        </div>
-        <div className=" col-lg-12 border p-3 bg-light my-2 mx-auto rounded shadow-sm post">
-          <LatestPost
-            posts={posts}
-            selectedpostid={selectpostid}
-            setselectedpostid={setSelectpostid}
-          />
-        </div>
-        <div className="col-lg-12  container-fluid d-flex flex-wrap justify-content-between align-items-center p-0">
-          <div className="col-lg-5 border bg-light my-2 rounded shadow-sm message">
-            <LatestMessage />
-          </div>
-          <div className="col-lg-6 border p-3 bg-light  my-2 rounded shadow-sm comment">
-            <LatestComment id={selectpostid}/>
+          <div className="col-lg-12  container-fluid d-flex flex-wrap justify-content-between align-items-center p-0">
+            <div className="col-lg-5 border bg-light my-2 rounded shadow-sm message">
+              <LatestMessage />
+            </div>
+            <div className="col-lg-6 border p-3 bg-light  my-2 rounded shadow-sm comment">
+              <LatestComment comments={selectpostcomments} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {/* )} */}
+    </>
   );
 }
 

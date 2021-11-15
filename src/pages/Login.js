@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -21,13 +22,14 @@ function Login({ setUser, user }) {
         // Signed in
         const user = userCredential.user;
         setUser(user);
-        console.log(user);
+        // console.log(user);
         axios
           .get(
             `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getUserDetails/${user.uid}`
           )
           .then((res) => {
-            console.log(res);
+            // console.log(res);
+            localStorage.setItem("dbuseruid", user.uid);
           });
         history.push("/");
         // ...

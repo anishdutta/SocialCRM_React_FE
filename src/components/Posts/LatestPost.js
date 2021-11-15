@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dot from "../assets/dot.png";
 // import facebook from "../assets/facebook.png";
 import { Table } from "react-bootstrap";
+import axios from "axios";
 import "./posts.css";
 
-const LatestPost = ({ posts, selectedpostid, setselectedpostid }) => {
+const LatestPost = ({
+  isLoggedin,
+  selectedpostcomments,
+  setselectedpostcomments,
+}) => {
+  const [posts, setPosts] = useState([]);
+  const page_id = localStorage.getItem("fbpageid");
+  const accessid = localStorage.getItem("fbaccesstoken");
+  useEffect(() => {
+    axios
+      .get(
+        `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message,likes,reactions,created_time,permalink_url,comments&access_token=${accessid}`
+      )
+      .then((response) => {
+        console.log(response.data.data);
+        setPosts(response.data.data);
+      });
+  }, [page_id, accessid]);
   return (
     <Table bordered hover className="posttable">
       <thead>
@@ -21,22 +39,35 @@ const LatestPost = ({ posts, selectedpostid, setselectedpostid }) => {
       </thead>
       <tbody>
         {posts.map((data, index) => (
-          <tr onClick={()=>{setselectedpostid(data.id)}}>
+          <tr
+            onClick={() => {
+              data.comments && setselectedpostcomments(data.comments.data);
+            }}
+            key={index}
+          >
             <td>{index + 1}</td>
             <td className="w-100 d-flex">
-              <img
-                src={data.full_picture}
-                alt="post"
-                style={{ height: "4em" }}
-                className="rounded shadow mx-1"
-              />
+              {data.full_picture && (
+                <img
+                  src={data.full_picture}
+                  alt="post"
+                  style={{ height: "4em" }}
+                  className="rounded shadow mx-1"
+                />
+              )}
               <p className="mx-2 para">{data.message}</p>
             </td>
             <td>posted</td>
-            <td>30/10/2021</td>
-            <td>12:00</td>
+            {data.created_time && (
+              <>
+                <td>{new Date(data.created_time).toDateString()}</td>
+                <td>
+                  {new Date(data.created_time).toTimeString().substr(0, 5)}
+                </td>
+              </>
+            )}
             <td>429</td>
-            <td>555</td>
+            {data.comments && <td>{data.comments.data.length}</td>}
             <td>1000</td>
             <td>
               <div className="dropdown">
@@ -54,9 +85,18 @@ const LatestPost = ({ posts, selectedpostid, setselectedpostid }) => {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuLink"
                 >
-                  <li className="dropdown-item">View More</li>
-                  <li className="dropdown-item">Edit Post</li>
-                  <li className="dropdown-item">Delete Post</li>
+                  <li className="dropdown-item">
+                    <a
+                      className="text-decoration-none text-secondary"
+                      href={data.permalink_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Post
+                    </a>
+                  </li>
+                  {/* <li className="dropdown-item">Edit Post</li> */}
+                  {/* <li className="dropdown-item">Delete Post</li> */}
                 </ul>
               </div>
             </td>
