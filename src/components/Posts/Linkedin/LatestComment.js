@@ -55,14 +55,14 @@ const Comments = (props) => {
   }
 
   return (
-    <div className="">
+    <div className="col comments">
       <div className="post-head ">
         <h5>Comments</h5>
       </div>
-      <div className="">
+      <div className="mycomments">
         {comments.length
           ? comments.map((comment, idx) => (
-              <ul key={idx} className="list-unstyled">
+              <ul key={idx}>
                 <li>
                   <div className="comment">
                     <b>{comment.from && comment.from.name}:</b>
@@ -73,7 +73,7 @@ const Comments = (props) => {
                     ? comment.comments.data.length
                       ? comment.comments.data.map(
                           (commenters, idx) => (
-                            <ul className="list-unstyled">
+                            <ul>
                               {/* <div className="reply-txt">Replies :</div> */}
                               <li>
                                 <div className="replies">
