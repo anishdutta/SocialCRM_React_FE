@@ -9,6 +9,7 @@
 .comment{
     height: 35vh;
     overflow-y: scroll;
+        overflow-x: hidden;
 }
 .chat{
     text-decoration: none;

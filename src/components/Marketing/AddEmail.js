@@ -36,12 +36,12 @@ const AddEmail = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div className="mb-2">
-        <label for="formFile" className="form-label">
-          Email List
-        </label>
-        <input className="form-control" type="file" id="formFile" />
-      </div>
+      {/* <div className="mb-2"> */}
+      <label for="formFile" className="form-label">
+        Email List
+      </label>
+      <input className="form-control" type="file" id="formFile" />
+      {/* </div> */}
       <CsvDnD />
       <button
         type="submit"
