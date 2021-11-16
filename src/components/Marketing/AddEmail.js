@@ -37,10 +37,10 @@ const AddEmail = () => {
         />
       </div>
       {/* <div className="mb-2">
-        <label for="formFile" className="form-label">
-          Email List
-        </label>
-        <input className="form-control" type="file" id="formFile" />
+      <label for="formFile" className="form-label">
+        Email List
+      </label>
+      <input className="form-control" type="file" id="formFile" />
       </div> */}
       <CsvDnD />
       <button

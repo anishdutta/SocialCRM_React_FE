@@ -51,9 +51,6 @@ const LastMail = () => {
     setMessage("");
     setSubject("");
   };
-  const sendToALl = ()=>{
-
-  }
 
   return (
     <>
@@ -86,22 +83,38 @@ const LastMail = () => {
           ))}
         </tbody>
       </Table>
-
-      <button
-        className="btn btn-sm btn-warning text-secondary"
-        onClick={() => {
-          sendToALl()
-        }}
-      >
-        Send to All
-      </button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Send Email</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="">
+            {/* <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
+                To
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                value={To}
+                onChange={(e) => {
+                  setTo(e.target.value);
+                }}
+              />
+            </div> */}
+            {/* <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
+                From
+              </label>
+              <input
+                type="Text"
+                className="form-control"
+                value={from}
+                onChange={(e) => {
+                  setFrom(e.target.value);
+                }}
+              />
+            </div> */}
             <div className="mb-3">
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Subject

@@ -31,7 +31,7 @@ function CsvDnD(props) {
 
   return (
     <section className="container">
-      <div {...getRootProps({ className: 'dropzone container p-2 rounded',style:{backgroundColor:"#e9e9e9" } } )}>
+      <div {...getRootProps({ className: 'dropzone container p-2 rounded', style: { backgroundColor: "#e9e9e9" } })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop some files here, or click to select files</p>
         <em>(Only *.csv file will be accepted)</em>

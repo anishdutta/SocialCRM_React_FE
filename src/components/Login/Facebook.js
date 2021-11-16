@@ -56,15 +56,18 @@ const FbLogin = ({ setisLoggedin }) => {
       scope="pages_show_list,read_page_mailboxes,pages_messaging,pages_read_engagement, pages_manage_metadata,pages_manage_posts,pages_read_engagement, public_profile"
       callback={(response) => {
         console.log(response);
+        // setUserdata(response);
+        // Setuseraccesstoken(response.accessToken);
+        // setUseruid(response.userID);
         localStorage.setItem("fbaccesstoken", response.accessToken);
         localStorage.setItem("fbuserid", response.userID);
         setupdate(!update);
         if (response.userID) {
-          setisLoggedin(true);
           history.push("/");
           // history.push("/facebook");
           history.location.pathname.replace("/facebook");
         }
+        // window.location.reload();
       }}
     />
     // )
