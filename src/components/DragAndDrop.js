@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 // import { storage } from "../firebase";
 // import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 function DragAndDrop({ url, seturl }) {
-  const dbuseruid = localStorage.getItem("dbuseruid");
+  // const dbuseruid = localStorage.getItem("dbuseruid");
   // const [files, setFiles] = useState([]);
   // const [prog, setprog] = useState(0);
   // const imagesRef = ref(storage, `posts/${dbuseruid}`);
@@ -13,7 +13,7 @@ function DragAndDrop({ url, seturl }) {
   // const metadata = {
   //   contentType: "image/jpeg , image/png",
   // };
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
+  const {getRootProps, getInputProps } =
     useDropzone({
       accept: "image/jpeg, image/png",
       onDrop: (acceptedFiles) => {

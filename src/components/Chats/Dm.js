@@ -18,10 +18,45 @@ const Dm = ({
 }) => {
   // const [reply, setReply] = useState("");
 
-  // useEffect(() => {
-  //   setmsg(reply);
-  // }, [reply]);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const uid = localStorage.getItem("dbuseruid");
+  useEffect(() => {
+    setmsg(reply);
+     // eslint-disable-next-line 
+  }, [reply]);
+  const getQuickReply = () => {
+    axios
+      .get(
+        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getCustomReply/${uid}`
+      )
+      .then((res) => setQuickReply(res.data));
+  };
+  const addQuickReply = () => {
+    axios
+      .post(
+        "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/createCustomReply",
+        { userId: uid, message: newReply }
+      )
+      .then((res) => setNewReply(""));
+  };
+  const deleteQuickReply = (Id) => {
+    console.log("uid", uid);
+    console.log(Id);
+    axios
+      .post(
+        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/deleteCustomReply`,
+        { userId: uid, Id: Id }
+      )
+      .then((res) => console.log(res.data));
+  };
+  useEffect(() => {
+    getQuickReply();
+     // eslint-disable-next-line 
+  }, [quickReply]);
+  
   return (
     <div className="">
       <div className="border-bottom w-100 d-flex p-2">
