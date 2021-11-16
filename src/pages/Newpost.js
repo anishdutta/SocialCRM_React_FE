@@ -7,7 +7,7 @@ function NewPost() {
   const accessid = localStorage.getItem("fbaccesstoken");
   // console.log(accessid);
   const history = useHistory();
-  // const userid = localStorage.getItem("fbuserid");
+  const userid = localStorage.getItem("fbuserid");
 
   const page_id = localStorage.getItem("fbpageid");
 
