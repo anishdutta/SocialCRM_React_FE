@@ -24,7 +24,7 @@ const Chat = () => {
   const [mymessage, setmessage] = useState([]);
   const [sender, setsender] = useState([]);
   const [msg, setmsg] = useState("");
-  const [ismsg, setismsg] = useState([]);
+  // const [ismsg, setismsg] = useState([]);
   const [senderid, setsenderid] = useState("");
   const [userdp, setuserdp] = useState("");
   const [email, setemail] = useState("");
@@ -111,7 +111,13 @@ const Chat = () => {
           </div>
         </div>
         <div className="col-lg-3 mx-auto my-2">
-          <Saved email={email} profilepic={userdp} name={sender} />
+          <Saved
+            email={email}
+            profilepic={userdp}
+            name={sender}
+            msg={msg}
+            setmsg={setmsg}
+          />
         </div>
       </div>
     </main>

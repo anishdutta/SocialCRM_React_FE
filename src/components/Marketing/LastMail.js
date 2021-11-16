@@ -21,7 +21,7 @@ const LastMail = () => {
         `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getUserDetails/${userdbuid}`
       )
       .then((res) => {
-        console.log(res.data[0]);
+        // console.log(res.data[0]);
         setuser(res.data[0]);
       });
   }, [userdbuid]);
@@ -67,7 +67,7 @@ const LastMail = () => {
         </thead>
         <tbody>
           {emails.map((data, index) => (
-            <tr key={data.emailId}>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td className="">{data.emailId}</td>
               <td>{data.lastEmail}</td>

@@ -3,15 +3,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import FacebookLogin from "react-facebook-login";
-// import { useRecoilState, useRecoilValue } from "recoil";
-// import { access_token, uid, pageid } from "../../GlobalState";
+
 import axios from "axios";
 // import { useHistory } from "react-router-dom";
 // import { useCookies } from "react-cookie";
 
-const FbLogin = ({setisLoggedin}) => {
-  // const [user_accessToken, Setuseraccesstoken] = useRecoilState(access_token);
-
+const FbLogin = ({ setisLoggedin }) => {
   // const isLoggedin = props.isLoggedin;
   const fbuserid = localStorage.getItem("fbuserid");
   const fbaccesstoken = localStorage.getItem("fbaccesstoken");
@@ -21,7 +18,7 @@ const FbLogin = ({setisLoggedin}) => {
   // const [userData, setUserdata] = useState(null);
   // const [user_uid, setUseruid] = useRecoilState(uid);
   // const [page_id, setpageid] = useRecoilState(pageid);
-  // const uidvalue = useRecoilValue(uid);
+
   const [update, setupdate] = useState(false);
 
   // const history = useHistory();
@@ -34,7 +31,7 @@ const FbLogin = ({setisLoggedin}) => {
       .then((response) => {
         if (Array.isArray(response.data.data) && response.data.data.length) {
           // Setuseraccesstoken(response.data.data[0].access_token);
-          console.log(response)
+          console.log(response);
           localStorage.setItem(
             "fbaccesstoken",
             response.data.data[0].access_token
@@ -68,7 +65,7 @@ const FbLogin = ({setisLoggedin}) => {
         if (response.userID) {
           setisLoggedin(true);
         }
-          // window.location.reload();
+        // window.location.reload();
       }}
     />
     // )
