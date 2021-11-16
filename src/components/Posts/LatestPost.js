@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 import dot from "../assets/dot.png";
 // import facebook from "../assets/facebook.png";
@@ -9,11 +10,34 @@ const LatestPost = ({
   isLoggedin,
   selectedpostcomments,
   setselectedpostcomments,
+  selectedpostid,
+  setselectedpostid,
 }) => {
   const [posts, setPosts] = useState([]);
-  const page_id = localStorage.getItem("fbpageid");
-  const accessid = localStorage.getItem("fbaccesstoken");
+  const [page_id, setpage_id] = useState("");
+  const [accessid, setaccessid] = useState("");
+  const [data, setData] = useState(false);
+  const [other, setother] = useState([]);
+
   useEffect(() => {
+    const page_id = localStorage.getItem("fbpageid");
+    const accessid = localStorage.getItem("fbaccesstoken");
+    setpage_id(page_id);
+    setaccessid(accessid);
+    setData(true);
+  }, []);
+
+  const likes = (id) => {
+    other.filter((other) => {
+      if (other.id === id) {
+        console.log()
+        return other.likes.data.length;
+      }
+    });
+  };
+
+  useEffect(() => {
+    // if (data) {
     axios
       .get(
         `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message,likes,reactions,created_time,permalink_url,comments&access_token=${accessid}`
@@ -21,7 +45,17 @@ const LatestPost = ({
       .then((response) => {
         console.log(response.data.data);
         setPosts(response.data.data);
+        axios
+          .get(
+            `https://graph.facebook.com/v11.0/${page_id}/feed?fields=comments.limit(1).summary(true),likes.limit(1).summary(true)&access_token=${accessid}`
+          )
+          .then((res) => {
+            setother(res.data.data);
+            console.log(res);
+          });
       });
+
+    // }
   }, [page_id, accessid]);
   return (
     <Table bordered hover className="posttable">
@@ -41,7 +75,7 @@ const LatestPost = ({
         {posts.map((data, index) => (
           <tr
             onClick={() => {
-              data.comments && setselectedpostcomments(data.comments.data);
+              setselectedpostid(data.id);
             }}
             key={index}
           >
@@ -66,7 +100,8 @@ const LatestPost = ({
                 </td>
               </>
             )}
-            <td>429</td>
+            {console.log(likes(data.id))}
+            <td>{parseInt(likes(data.id))}</td>
             {data.comments && <td>{data.comments.data.length}</td>}
             <td>1000</td>
             <td>

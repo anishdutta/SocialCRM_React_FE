@@ -8,9 +8,12 @@ function MailSubject() {
   useEffect(() => {
     axios
       .get(
-        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getSendEmailList/test`
+        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getSendEmailList/${dbuseruid}`
       )
-      .then((res) => setEmails(res.data));
+      .then((res) => {
+        setEmails(res.data);
+        // console.log(res);
+      });
   }, [dbuseruid,emails]);
 
   // console.log(emails)
@@ -21,7 +24,8 @@ function MailSubject() {
         <tr>
           <th>SNo</th>
           <th>Mail Subject</th>
-          <th>No .of Recipent</th>
+          <th>Mail body</th>
+          <th>Email(To)</th>
           <th>Date</th>
         </tr>
       </thead>
@@ -30,8 +34,12 @@ function MailSubject() {
           <tr key={index}>
             <td>{index + 1}</td>
             <td className="">{data.subject}</td>
-            <td>451</td>
-            <td>30/10/2021</td>
+            <td>{data.body}</td>
+            <td>{data.emailId}</td>
+            <td>
+              {new Date(parseInt(data.timeStamp)).toLocaleDateString()},
+              {new Date(parseInt(data.timeStamp)).toLocaleTimeString()}
+            </td>
           </tr>
         ))}
       </tbody>

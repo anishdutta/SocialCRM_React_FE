@@ -43,3 +43,8 @@
 .send_button{
     border: none;
 }
+
+.quick{
+    height:20vh;
+    overflow:auto;
+}

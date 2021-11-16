@@ -7,16 +7,16 @@ import "../components/Posts/posts.css";
 import LatestMessage from "../components/Posts/LatestMessage";
 
 import axios from "axios";
-import { useRecoilValue } from "recoil";
-// import { access_token, pageid, uid } from "../GlobalState";
+
 import { useEffect, useState } from "react";
 import FbLogin from "../components/Login/Facebook";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Post() {
   const accessid = localStorage.getItem("fbaccesstoken");
-  // const accessid = useRecoilValue(access_token);
+
   //   const userid = useRecoilValue(uid);
+  const history = useHistory();
   const page_id = localStorage.getItem("fbpageid");
   // const page_id = useRecoilValue(pageid);
   //   const [item, setItem] = useState("");
@@ -26,13 +26,10 @@ function Post() {
 
   const [isLoggedin, setisLoggedin] = useState(false);
 
-  const [selectpostcomments, setSelectpostcomments] = useState(0);
+  const [selectpostcomments, setSelectpostcomments] = useState(null);
+  const [selectpostid, setSelectpostid] = useState(null);
 
   // console.log(posts);
-  useEffect(() => {
-    const accessid = localStorage.getItem("fbaccesstoken");
-    console.log(accessid);
-  }, [isLoggedin]);
 
   // const a = async () => {
   //   const resp = await axios.get(
@@ -48,12 +45,14 @@ function Post() {
         `https://graph.facebook.com/v11.0/${page_id}/posts?fields=full_picture,message,likes,reactions,created_time,permalink_url,comments&access_token=${accessid}`
       )
       .then((response) => {
+        // window.location.reload();
         console.log("yahan nhi aaya");
         // setisloading(false);
         // console.log(response.data.data);
         // setPosts(response.data.data);
       })
       .catch((err) => {
+        // window.location.reload();
         if (err) {
           localStorage.removeItem("fbaccesstoken");
           localStorage.removeItem("fbpageid");
@@ -68,7 +67,7 @@ function Post() {
     </div>
   ) : (
     <>
-      {/* {isLoggedin && ( */}
+      {/* {updated && ( */}
       <div className=" px-5 pt-3 h-100">
         <div className="row">
           <div className="d-flex justify-content-between px-0">
@@ -124,6 +123,8 @@ function Post() {
               setisLoggedin={setisLoggedin}
               selectedpostcomments={selectpostcomments}
               setselectedpostcomments={setSelectpostcomments}
+              setselectedpostid={setSelectpostid}
+              selectedpostid={selectpostid}
             />
           </div>
           <div className="col-lg-12  container-fluid d-flex flex-wrap justify-content-between align-items-center p-0">
@@ -131,7 +132,10 @@ function Post() {
               <LatestMessage />
             </div>
             <div className="col-lg-6 border p-3 bg-light  my-2 rounded shadow-sm comment">
-              <LatestComment comments={selectpostcomments} />
+              <LatestComment
+                comments={selectpostcomments}
+                selectpostid={selectpostid}
+              />
             </div>
           </div>
         </div>

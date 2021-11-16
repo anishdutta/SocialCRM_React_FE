@@ -12,13 +12,19 @@ import "./posts.css";
 const LatestMessage = () => {
   // const [item, setItem] = useState("");
   // const [data,setData] = useState("")
+  const [data, setData] = useState(false);
   const [posts, setPosts] = useState([]);
   const accessid = localStorage.getItem("fbaccesstoken");
   const userid = localStorage.getItem("fbuserid");
   const page_id = localStorage.getItem("fbpageid");
+
   // console.log(posts);
+
   // console.log(accessid);
   useEffect(() => {
+    if (!page_id) {
+      setData(!data);
+    }
     axios
       .get(
         `https://graph.facebook.com/v11.0/${page_id}/conversations?fields=name,id,senders&access_token=${accessid}`
