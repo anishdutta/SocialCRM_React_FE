@@ -28,8 +28,9 @@ const App = () => {
     //     handleFailure(error);
     //   },
     // }); 
-    const redirecturi = "http://localhost:3000/linkedin"
-    const urlencoded = "http%3A%2F%2Flocalhost%3A3000%2Flinkedin"
+    const redirecturi = "https://sociophin.netlify.app/linkedin"
+    const urlencoded = "https%3A%2F%2Fsociophin.netlify.app%2Flinkedin"
+    // const urlencoded = "http%3A%2F%2Flocalhost%3A3000%2Flinkedin"
     const clientid = "782lxko1czd0k0"
     const clientsecret = "5yv3xigfyzedLIT4"
 
@@ -76,14 +77,7 @@ const App = () => {
 
     const getAccessToken = (code) => {
         const url = `https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&code=${code}&redirect_uri=${urlencoded}&client_id=${clientid}&client_secret=${clientsecret}`
-        // const params = {
-        //     'grant_type':'authorization_code',
-        //     'code': code,
-        //     'redirect_uri': urlencoded,
-        //     'client_id': clientid,
-        //     'client_secret': clientsecret
-        // }
-        axios.post(url).then(data => { console.log(data) }).catch(err => console.log(err))
+        axios.put(url).then(data => { console.log(data) }).catch(err => console.log(err))
     }
 
 
