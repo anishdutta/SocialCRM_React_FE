@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 // import { useLinkedIn } from "react-linkedin-login-oauth2";
 const App = () => {
     const [code, setcode] = useState("");
+    const [accesscode, setaccesscode] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const handleSuccess = (data) => {
         localStorage.setItem("licode", data);
@@ -17,28 +18,12 @@ const App = () => {
         setcode("");
         setErrorMessage(error.message);
     };
-    // const { linkedInLogin } = useLinkedIn({
-    //   clientId: "782lxko1czd0k0",
-    //   redirectUri: `http://localhost:3000/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
-    //   onSuccess: (code) => {
-    //     handleSuccess(code);
-    //     localStorage.setItem("licode", code);
-    //   },
-    //   onError: (error) => {
-    //     handleFailure(error);
-    //   },
-    // }); 
+
     const redirecturi = "https://sociophin.netlify.app/linkedin"
     const urlencoded = "https%3A%2F%2Fsociophin.netlify.app%2Flinkedin"
     // const urlencoded = "http%3A%2F%2Flocalhost%3A3000%2Flinkedin"
     const clientid = "782lxko1czd0k0"
     const clientsecret = "5yv3xigfyzedLIT4"
-
-    // const handlelinkedin = () => {
-    //     axios.post(`https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientid}&redirect_uri=${redirecturi}&state=foobarstate&scope=r_liteprofile%20r_emailaddress%20w_member_social`).then(data => {
-    //         console.log(data)
-    //     })
-    // }
 
 
     useEffect(() => {
@@ -51,15 +36,6 @@ const App = () => {
         if (code) {
             try {
                 getAccessToken(code)
-                // axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
-                //     'grant_type': 'authorization_code',
-                //     'code': code,
-                //     'redirect_uri': urlencoded,
-                //     'client_id': clientid,
-                //     'client_secret': clientsecret
-                // }).then(response => {
-                //     console.log(response)
-                // }).catch(data => { console.log(data) })
             } catch {
                 console.log("error")
 
@@ -70,14 +46,11 @@ const App = () => {
 
 
     const link = ` https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientid}&redirect_uri=${redirecturi}&state=foobarstate&scope=r_liteprofile%20r_emailaddress%20w_member_social`
-    // const getcode = () => {
-    //     const link = ` https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientid}&redirect_uri=${redirecturi}&state=foobarstate&scope=r_liteprofile%20r_emailaddress%20w_member_social`
-    //     return link
-    // }
+
 
     const getAccessToken = (code) => {
         const url = `https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&code=${code}&redirect_uri=${urlencoded}&client_id=${clientid}&client_secret=${clientsecret}`
-        axios.put(url).then(data => { console.log(data) }).catch(err => console.log(err))
+        axios.put(url).then(data => { console.log(data); setaccesscode(data.access_token); localStorage.setItem('liaccesstoken',data.access_token) }).catch(err => console.log(err))
     }
 
 
