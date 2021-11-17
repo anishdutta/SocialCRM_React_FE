@@ -12,7 +12,7 @@ const Header = ({ user }) => {
 
   return (
     <>
-      <header className="header vw-100">
+      <header className="header vw-90">
         <nav className="sticky-top top-0 d-flex align-items-center w-100 py-2">
           <div className="flex-grow-1 w-25 px-4">
             <Link to="/" className="text-decoration-none">

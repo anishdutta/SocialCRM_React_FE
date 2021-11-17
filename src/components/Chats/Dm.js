@@ -18,47 +18,12 @@ const Dm = ({
 }) => {
   // const [reply, setReply] = useState("");
 
+  // useEffect(() => {
+  //   setmsg(reply);
+  // }, [reply]);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const uid = localStorage.getItem("dbuseruid");
-  useEffect(() => {
-    setmsg(reply);
-     // eslint-disable-next-line 
-  }, [reply]);
-  const getQuickReply = () => {
-    axios
-      .get(
-        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/getCustomReply/${uid}`
-      )
-      .then((res) => setQuickReply(res.data));
-  };
-  const addQuickReply = () => {
-    axios
-      .post(
-        "https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/createCustomReply",
-        { userId: uid, message: newReply }
-      )
-      .then((res) => setNewReply(""));
-  };
-  const deleteQuickReply = (Id) => {
-    console.log("uid", uid);
-    console.log(Id);
-    axios
-      .post(
-        `https://5k3xbanutb.execute-api.us-east-1.amazonaws.com/dev/api/deleteCustomReply`,
-        { userId: uid, Id: Id }
-      )
-      .then((res) => console.log(res.data));
-  };
-  useEffect(() => {
-    getQuickReply();
-     // eslint-disable-next-line 
-  }, [quickReply]);
-  
   return (
-    <div className="">
+    <div className="h-100 d-flex flex-column justify-content-between">
       <div className="border-bottom w-100 d-flex p-2">
         <div className="">
           <img
@@ -73,9 +38,8 @@ const Dm = ({
           <p className="m-0 text-secondary">{email}</p>
         </div>
       </div>
-
-      <div className="py-3 px-2">
-        <div className="">
+      <div className="py-3 px-2 w-100" style={{overflowY:"scroll"}}>
+        <div className="w-100">
           {mymessage.length
             ? mymessage.map((pdata, idx) => (
                 <Message
@@ -88,18 +52,18 @@ const Dm = ({
               ))
             : "Select any conversation"}
         </div>
-        <div className="text_input d-flex px-3">
-          <input
-            type="text"
-            className="w-100 bg-transparent"
-            placeholder="Enter Your Message"
-            value={msg}
-            onChange={(e) => setmsg(e.target.value)}
-          />
-          <button onClick={PostMsg} className="send_button">
-            <img src={send} alt="send" className="cursor-pointer" />
-          </button>
-        </div>
+      </div>
+      <div className="text_input d-flex m-2 px-3">
+        <input
+          type="text"
+          className="w-100 bg-transparent"
+          placeholder="Enter Your Message"
+          value={msg}
+          onChange={(e) => setmsg(e.target.value)}
+        />
+        <button onClick={PostMsg} className="send_button">
+          <img src={send} alt="send" className="cursor-pointer" />
+        </button>
       </div>
     </div>
   );

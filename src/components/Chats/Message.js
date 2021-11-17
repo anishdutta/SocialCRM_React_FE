@@ -5,8 +5,8 @@ const Message = ({ isPrimary, pdata, profilepic, convertToLocalTime }) => {
   return (
     <>
       {isPrimary ? (
-        <div className="d-flex align-items-end my-4 ">
-          <div className="h-100 mx-2">
+        <div className="d-flex align-items-end my-4">
+          <div className="mx-2 ">
             <img
               src={profilepic}
               alt=""
@@ -14,14 +14,22 @@ const Message = ({ isPrimary, pdata, profilepic, convertToLocalTime }) => {
               className="rounded-circle"
             />
           </div>
-          {convertToLocalTime(pdata.created_time)}
-          <div className="specific_chat_primary p-2 w-50">{pdata.message}</div>
+          <div className="dm d-flex flex-column">
+            <div className="specific_chat_primary p-2 shadow">{pdata.message}</div>
+            <span className="chat_time align-self-end mt-1">
+              {convertToLocalTime(pdata.created_time)}
+            </span>
+          </div>
         </div>
       ) : (
         <div className="d-flex align-items-end my-4 justify-content-end">
-          <div className="specific_chat p-2 w-50">{pdata.message}</div>
-          {convertToLocalTime(pdata.created_time)}
-          <div className="h-100 mx-2">
+          <div className="dm d-flex flex-column">
+            <div className="specific_chat p-2 shadow">{pdata.message}</div>
+            <span className="chat_time align-self-end mt-1">
+              {convertToLocalTime(pdata.created_time)}
+            </span>
+          </div>
+          <div className="mx-2">
             <img
               src={profilepic}
               alt=""

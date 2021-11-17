@@ -89,13 +89,13 @@ const Chat = () => {
 
   return (
     <main className="container-fluid px-5 h-100">
-      <div className="row">
-        <div className="col-lg-8 bg-light shadow rounded my-2">
-          <div className="row">
+      <div className="row h-100">
+        <div className="col-lg-8 bg-light shadow rounded my-2 h-100">
+          <div className="row h-100">
             <div className="col-lg-4">
               <Names />
             </div>
-            <div className="col-lg-8 bg-light p-0">
+            <div className="col-lg-8 bg-light p-0 h-100">
               <Dm
                 mymessage={mymessage}
                 PostMsg={PostMsg}

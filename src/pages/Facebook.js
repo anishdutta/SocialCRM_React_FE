@@ -131,7 +131,7 @@ function Post() {
             <div className="col-lg-5 border bg-light my-2 rounded shadow-sm message">
               <LatestMessage />
             </div>
-            <div className="col-lg-6 border p-3 bg-light  my-2 rounded shadow-sm comment">
+            <div className="col-lg-6 border p-3 bg-light  my-2 rounded shadow-sm comment_box">
               <LatestComment
                 comments={selectpostcomments}
                 selectpostid={selectpostid}

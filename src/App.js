@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 // import { useState } from "react";
 // import Post from "./pages/Post";
 import Facebook from "./pages/Facebook";
+import Linkedin from "./pages/Linkedin";
 import Newpost from "./pages/Newpost";
 import Marketing from "./pages/Marketing";
 import Chat from "./pages/Chat";
@@ -47,7 +48,7 @@ function App() {
               <>
                 <Route path="/facebook" exact render={() => <Facebook />} />
                 <Route path="/instagram" exact render={() => <Facebook />} />
-                <Route path="/linkedin" exact render={() => <Facebook />} />
+                <Route path="/linkedin/" render={() => <Linkedin />} />
                 <Route path="/newpost" exact render={() => <Newpost />} />
                 <Route path="/marketing" exact render={() => <Marketing />} />
                 <Route path="/chat" exact render={() => <Chat />} />
