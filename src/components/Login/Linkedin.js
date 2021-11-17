@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { LinkedIn } from "react-linkedin-login-oauth2";
+// import { LinkedIn } from "react-linkedin-login-oauth2";
 // import { useLinkedIn } from "react-linkedin-login-oauth2";
 const App = () => {
     const [code, setcode] = useState("");
@@ -74,15 +74,15 @@ const App = () => {
     // }
 
     const getAccessToken = (code) => {
-        const url = "https://www.linkedin.com/oauth/v2/accessToken"
-        const params = {
-            'grant_type': 'authorization_code',
-            'code': code,
-            'redirect_uri': urlencoded,
-            'client_id': clientid,
-            'client_secret': clientsecret
-        }
-        axios.post(url, params).then(data => { console.log(data) }).catch(err=>console.log(err))
+        const url = `https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&code=${code}&redirect_uri=${urlencoded}&client_id=${clientid}&client_secret=${clientsecret}`
+        // const params = {
+        //     'grant_type':'authorization_code',
+        //     'code': code,
+        //     'redirect_uri': urlencoded,
+        //     'client_id': clientid,
+        //     'client_secret': clientsecret
+        // }
+        axios.post(url).then(data => { console.log(data) }).catch(err => console.log(err))
     }
 
 
