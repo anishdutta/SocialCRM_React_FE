@@ -19,6 +19,7 @@ const App = () => {
         setErrorMessage(error.message);
     };
 
+    // const redirecturi = "http://localhost:3000/linkedin"
     const redirecturi = "https://sociophin.netlify.app/linkedin"
     const urlencoded = "https%3A%2F%2Fsociophin.netlify.app%2Flinkedin"
     // const urlencoded = "http%3A%2F%2Flocalhost%3A3000%2Flinkedin"
@@ -50,7 +51,7 @@ const App = () => {
 
     const getAccessToken = (code) => {
         const url = `https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&code=${code}&redirect_uri=${urlencoded}&client_id=${clientid}&client_secret=${clientsecret}`
-        axios.put(url).then(data => { console.log(data); setaccesscode(data.access_token); localStorage.setItem('liaccesstoken',data.access_token) }).catch(err => console.log(err))
+        axios.put(url, { headers: { "Access-Control-Allow-Origin": "*" } }).then(data => { console.log(data); setaccesscode(data.access_token); localStorage.setItem('liaccesstoken', data.access_token) }).catch(err => console.log(err))
     }
 
 
