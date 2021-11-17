@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 import dot from "../assets/dot.png";
